@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('user_crew', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id');
+            $table->string('crew_id');
+            $table->float('import');
+            $table->date('year');
             $table->timestamps();
         });
     }

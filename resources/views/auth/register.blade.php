@@ -16,6 +16,13 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!--Data birth-->
+        <div class="mt-4">
+            <x-input-label for="years" :value="__('Years')"/>
+            <x-text-input id="years" class="block mt-1 w-full" type="data" name="years" :value="old('years')" required autocomplete="date of birth" />
+            <x-input-error :messages="$errors->get('years')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
@@ -27,7 +34,7 @@
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
-
+        
         <!-- Confirm Password -->
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->user_crew_id();
-            $table->import();
-            $table->status();
+            $table->string('user_crew_id');
+            $table->float('import');
+            $table->integer('status');
             $table->timestamps();
         });
     }

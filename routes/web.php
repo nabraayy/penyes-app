@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,13 @@ Route::middleware('auth')->group(function () {
 
 
 require __DIR__.'/auth.php';
+
+ Route::get('/register', function(){
+    return view('auth.register');
+})->name('register');
+
+Route::post('/register', [RegisteredUserController::class, 'store']);
+
+Route::get('/login',function(){
+    return view('auth.login');
+})->name('login');

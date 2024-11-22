@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
+            $table->integer('x');
+            $table->integer('y');
+            $table->string('crew_id');
+            $table->date('year');
             $table->timestamps();
         });
     }
 
-    /**
+    /** 
      * Reverse the migrations.
      */
     public function down(): void
