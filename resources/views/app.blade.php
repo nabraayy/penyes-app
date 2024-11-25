@@ -11,16 +11,28 @@
         <div class="logo">
             <img src="logo1.jpg" alt="Logo">
         </div>
-        <h1>HOME PAGES</h1>
-        <nav class="home">
-            <ul>
-                @auth
-                {{Auth::user()->name}}
-                @else
-                <ol><a href="/register">Register</a></ol>
-                <ol><a href="/login">Login</a></ol>
-                @endauth
-        </nav>
+        <h1>HOME PAGE</h1>
+<nav class="home">
+    <ul>
+        @auth
+            
+            <ol>{{ Auth::user()->name }}</ol>
+            
+            
+            <ol>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <a href="/logout">Logout</button>
+                </form>
+            </ol>
+        @else
+            
+            <ol><a href="/register">Register</a></ol>
+            <ol><a href="/login">Login</a></ol>
+        @endauth
+    </ul>
+</nav>
+
     </header>
 
     <main>

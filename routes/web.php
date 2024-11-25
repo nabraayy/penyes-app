@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -39,3 +40,10 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::get('/login',function(){
     return view('auth.login');
 })->name('login');
+
+
+Route::get('logout',function(Request $request){
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect('/');
+});
