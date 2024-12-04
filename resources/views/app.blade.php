@@ -7,31 +7,32 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    
     <header class="header">
         <div class="logo">
             <img src="logo1.jpg" alt="Logo">
         </div>
-        <h1>HOME PAGE</h1>
-<nav class="home">
-    <ul>
-        @auth
-            
-            <ol>{{ Auth::user()->name }}</ol>
-            
-            
-            <ol>
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <a href="/logout">Logout</button>
-                </form>
-            </ol>
-        @else
-            
-            <ol><a href="/register">Register</a></ol>
-            <ol><a href="/login">Login</a></ol>
-        @endauth
-    </ul>
-</nav>
+        <h1>PENYAS APP</h1>
+    <nav class="home">
+        <ul>
+            @auth
+                
+                <ol>{{ Auth::user()->name }}</ol>
+                
+                
+                <ol>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <a href="/logout">Logout</button>
+                    </form>
+                </ol>
+            @else
+                
+                <ol><a href="/register">Register</a></ol>
+                <ol><a href="/login">Login</a></ol>
+            @endauth
+        </ul>
+    </nav>
 
     </header>
 
@@ -114,17 +115,21 @@ p {
     justify-content: space-between;
     background-color: #f0f0f0;
     padding: 10px 20px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #050505;
 }
 
 .header .logo img {
-    width: 40px;
-    height: 40px;
+    display: flex;
+    justify-content:stretch;
+    align-content: stretch;
+    max-width: 160px;
+    max-height: 160px;
 }
 
 .header h1 {
     font-size: 24px;
 }
+
 
 
 .hero {
@@ -229,10 +234,9 @@ p {
     background-color: #f9f9f9;
 }
 .logo{
-    margin: 10px;
-    padding: 10px;
-    width: 50px;
-    height: 50px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }
 
 
