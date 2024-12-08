@@ -21,7 +21,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'data_of_birth',
         'password',
+        'role',
     ];
 
     /**
@@ -46,5 +48,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
+    public function isAdmin(){
+        return $this->role ===1;
+    }
+    public function isUser(){
+        return $this->role === 2;
+    }
 }
