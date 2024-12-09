@@ -78,10 +78,10 @@
         </section>
 
         <section class="location">
-            <h3>Localization</h3>
+            <h3>Donde encontrarnos</h3>
             <div class="map-container">
                 <div class="map-placeholder" id="map">
-                    <span>Map Placeholder</span>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.9881997197826!2d-0.16296322348409323!3d39.852097489810674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd600f9b68a12811%3A0x9276403b60cb4465!2sC.%20San%20Joaquin%2C%2012520%20Nules%2C%20Castell%C3%B3n!5e0!3m2!1ses!2ses!4v1733766858957!5m2!1ses!2ses" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>
@@ -329,11 +329,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-height: calc(100vh - 200px); /* Altura máxima disponible dejando espacio para el footer */
+    margin: 0 auto;
 }
 
-.map-placeholder {
-    width: 100%;
-    height: 300px;
+#map {
+    width: 90%;
+    max-width: 1200px;
+    height: 500px; /* Ajusta la altura del mapa */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #f0f0f0;
