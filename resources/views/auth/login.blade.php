@@ -1,4 +1,9 @@
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <title>Login</title>
+</head>
 
+<body>
     <div class="login-container">
         <!-- Logo centrado -->
         <div class="logo-container">
@@ -47,121 +52,124 @@
         </form>
     </div>
 
-<style>
-    /* Estilos generales */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+    <style>
+        /* Cargando la fuente 'Caveat' */
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
 
-/* Contenedor principal del login */
-.login-container {
-    background-color: white;
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-}
+        /* Estilos generales */
+        body {
+            font-family: 'Caveat', cursive;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-/* Logo centrado */
-.logo-container {
-    margin-bottom: 20px;
-}
+        /* Contenedor principal del login */
+        .login-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
 
-.logo {
-    max-width: 150px;
-    margin: 0 auto;
-}
+        /* Logo centrado */
+        .logo-container {
+            margin-bottom: 20px;
+        }
 
-/* Estilos del formulario */
-.login-form {
-    width: 100%;
-}
+        .logo {
+            max-width: 150px;
+            margin: 0 auto;
+        }
 
-/* Estilo para los inputs */
-.input-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
+        /* Estilos del formulario */
+        .login-form {
+            width: 100%;
+        }
 
-.input-group label {
-    display: block;
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 8px;
-}
+        /* Estilo para los inputs */
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
 
-.input-field {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    background-color: #f9f9f9;
-}
+        .input-group label {
+            display: block;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 8px;
+        }
 
-.input-field:focus {
-    border-color: #007BFF;
-    outline: none;
-}
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+        }
 
-/* Estilos del checkbox */
-.checkbox {
-    margin-right: 8px;
-}
+        .input-field:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
 
-/* Estilo del botón */
-.login-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007BFF;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+        /* Estilos del checkbox */
+        .checkbox {
+            margin-right: 8px;
+        }
 
-.login-button:hover {
-    background-color: #0056b3;
-}
+        /* Estilo del botón */
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-/* Estilo de opciones adicionales */
-.forgot-password {
-    display: block;
-    font-size: 14px;
-    color: #007BFF;
-    margin-top: 10px;
-    text-decoration: none;
-}
+        .login-button:hover {
+            background-color: #0056b3;
+        }
 
-.forgot-password:hover {
-    text-decoration: underline;
-}
+        /* Estilo de opciones adicionales */
+        .forgot-password {
+            display: block;
+            font-size: 14px;
+            color: #007BFF;
+            margin-top: 10px;
+            text-decoration: none;
+        }
 
-/* Estilo del texto "Remember me" */
-.remember-me {
-    text-align: left;
-    font-size: 14px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
 
-/* Estilo de la parte inferior del formulario */
-.form-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-}
+        /* Estilo del texto "Remember me" */
+        .remember-me {
+            text-align: left;
+            font-size: 14px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
 
-</style>
+        /* Estilo de la parte inferior del formulario */
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+</body>

@@ -1,9 +1,15 @@
 <head>
-    <link href="https://fonts.google.com/share?selection.family=Caveat:wght@400..700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <title>Register</title>
-
 </head>
+
+<body>
     <div class="form-container">
+        <div class="form-header">
+            <h2>Register</h2>
+            <p>Create a new account</p>
+        </div>
+
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -84,114 +90,109 @@
             <!-- Submit Button -->
             <div class="form-buttons">
                 <x-primary-button class="submit-button">
-                    {{ __('OK') }}
+                    {{ __('Register') }}
                 </x-primary-button>
             </div>
         </form>
+
+        <div class="form-footer">
+            <p>Already have an account? <a href="/login">Login here</a></p>
+        </div>
     </div>
 
-<style>
-   @import url('https://fonts.google.com/share?selection.family=Caveat:wght@400..700');
-   @font-face {
-        font-family:Caveat;
-        src: url('public/canveat/Tareas/penyes-app/public/build/canveat/Caveat-VariableFont_wght.ttf') format('Caveat');
-    }
-   body {
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
 
-    font-family:'Caveat', sans-serif;
-    background-image:url('https://st2.depositphotos.com/3233277/10047/v/450/depositphotos_100476030-stock-illustration-hand-drawing-of-a-raging.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    background-size: cover;
-    margin: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+        body {
+            font-family: 'Caveat', cursive;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-}
+        .form-container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
 
-.form-container {
-    background: #ffffff;
-    width: 320px;
-    padding: 20px;
-    border-radius: 8px;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+        .form-header h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #333;
+        }
 
-/* Bear Images */
-.bear-top-right {
-    position: absolute;
-    top: -40px;
-    right: -40px;
-    width: 80px;
-}
+        .form-header p {
+            font-size: 16px;
+            color: #777;
+        }
 
-.bear-bottom-left {
-    position: absolute;
-    bottom: -40px;
-    left: -40px;
-    width: 80px;
-}
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
 
-/* Form Group Styles */
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-bottom: 15px;
-}
+        .form-group label {
+            font-size: 14px;
+            color: #555;
+        }
 
-x-input-label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-}
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-top: 8px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
 
-.input-field {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    width: 100%;
-}
+        .input-field:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+        }
 
-.input-field:focus {
-    outline: none;
-    border-color: #007BFF;
-    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
-}
+        .error-message {
+            font-size: 12px;
+            color: #e74c3c;
+        }
 
-/* Error Message */
-.error-message {
-    color: #ff0000;
-    font-size: 12px;
-}
+        .submit-button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-/* Submit Button */
-.form-buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
 
-.submit-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #333;
-    background-color: #ffffff;
-    border: 2px solid #333;
-    border-radius: 5px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+        .form-footer {
+            margin-top: 15px;
+        }
 
-.submit-button:hover {
-    background-color: #f5f5f5;
-    border-color: #555;
-    color: #000;
-}
-</style>
+        .form-footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</body>

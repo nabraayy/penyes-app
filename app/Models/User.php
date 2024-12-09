@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -23,7 +22,7 @@ class User extends Authenticatable
         'email',
         'data_of_birth',
         'password',
-        'role',
+        'role_id',  // Asegúrate de que sea role_id, no 'role'
     ];
 
     /**
@@ -48,13 +47,29 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function role(){
+
+    /**
+     * Relación con el modelo Role.
+     */
+    public function role()
+    {
         return $this->belongsTo(Role::class);
     }
-    public function isAdmin(){
-        return $this->role ===1;
+
+    /**
+     * Método para verificar si el usuario tiene el rol 'Admin'.
+     */
+    public function isAdmin()
+    {
+        echo 'es admin';
+        return $this->role()->where('id', 1)->exists(); // Verifica si el usuario tiene el rol 'Admin'
     }
-    public function isUser(){
-        return $this->role === 2;
+
+    /**
+     * Método para verificar si el usuario tiene el rol 'User'.
+     */
+    public function isUser()
+    {
+        return $this->role_id === 2; // Verifica si el usuario tiene el rol 'User'
     }
 }
