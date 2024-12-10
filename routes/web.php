@@ -6,7 +6,9 @@ use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use Inertia\Inertia;
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -62,6 +64,7 @@ Route::get('logout',function(Request $request){
     $request->session()->regenerateToken();
     return redirect('/');
 });
+//rutas de admin y user, despues del login
 Route::get('/admin',function(){
     return view('admin.dashboard');
 })->name('admin.dashboard');
@@ -69,3 +72,28 @@ Route::get('/admin',function(){
 Route::get('/user', function(){
     return view('user.dashboard');
 })->name('user.dashboard');
+
+
+//rutas administrador
+// Rutas para la administración de usuarios
+Route::get('/admin/users', [AdminController::class, 'manageUsers'])->name('admin.users');
+Route::get('/admin/users/create', [AdminController::class, 'createUser'])->name('admin.users.create');
+Route::get('/admin/users/{id}/edit', [AdminController::class, 'editUser'])->name('admin.users.edit');
+Route::delete('/admin/users/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
+
+// Rutas para la administración de Peñas
+Route::get('/admin/penyas', [AdminController::class, 'managePenyas'])->name('admin.penyas');
+Route::get('/admin/penyas/create', [AdminController::class, 'createPenya'])->name('admin.penyas.create');
+Route::get('/admin/penyas/{id}/edit', [AdminController::class, 'editPenya'])->name('admin.penyas.edit');
+Route::delete('/admin/penyas/{id}', [AdminController::class, 'deletePenya'])->name('admin.penyas.delete');
+Route::get('/admin/penyas/listas',[AdminController::class,'listasPenya'])->name('admin.penyas.listas');
+// Ruta para ver las relaciones entre usuarios y peñas
+Route::get('/admin/relaciones', [AdminController::class, 'viewRelations'])->name('admin.relations');
+
+// Ruta para gestionar las solicitudes
+Route::get('/admin/solicitudes', [AdminController::class, 'manageRequests'])->name('admin.solicitudes');
+
+//rutas usuario
+//Route::get('/user', [UserController::class, 'dashboard'])->name('user.dashboard');
+
+

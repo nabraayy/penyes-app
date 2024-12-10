@@ -65,8 +65,27 @@
             color: #A9A9A9;
         }
 
+        /* Botones adicionales */
+        .action-buttons {
+            margin: 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
 
+        .action-button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
 
+        .action-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -74,7 +93,7 @@
         <div class="logo">
             <img src="logo.jpg" alt="Logo">
         </div>
-        <h1>ADMIN CONTROL</h1>
+        <h1>WELCOME {{ Auth::user()->name }}</h1>
         <nav class="home">
             <ul class="nav-links">
                 @auth
@@ -92,5 +111,12 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Botones adicionales -->
+    <div class="action-buttons">
+        <a href="{{ route('dashboard') }}" class="action-button">Home</a>
+        <a href="{{route('admin.penyas.listas')}}" class="action-button">Listado de Peñas</a>
+        <a href="" class="action-button">Solicitar Unión a Peña</a>
+    </div>
 </body>
 </html>
