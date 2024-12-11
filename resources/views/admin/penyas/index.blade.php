@@ -3,7 +3,7 @@
 @section('content')
 <h1>Lista de Peñas</h1>
 
-<a href="{{ route('penyas.create') }}" class="btn btn-primary">Crear Peña</a>
+<a href="{{ route('admin.penyas.create') }}" class="btn btn-primary">Crear Peña</a>
 
 <table>
     <thead>
@@ -17,8 +17,8 @@
         <tr>
             <td>{{ $penya->name }}</td>
             <td>
-                <a href="{{ route('penyas.edit', $penya->id) }}" class="btn btn-warning">Editar</a>
-                <form action="{{ route('penyas.destroy', $penya->id) }}" method="POST" style="display:inline;">
+                <a href="{{ route('admin.penyas.edit', $penya->id) }}" class="btn btn-warning">Editar</a>
+                <form action="{{ route('admin.penyas.delete', $penya->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro?')">Eliminar</button>
