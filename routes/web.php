@@ -46,7 +46,7 @@ Route::middleware(['auth'])->group(function (){
 
 require __DIR__.'/auth.php';
 
- Route::get('/register', function(){
+Route::get('/register', function(){
     return view('auth.register');
 })->name('register');
 
@@ -57,7 +57,6 @@ Route::get('/login',function(){
 })->name('login');
 
 Route::post('/login', [AuthController::class, 'login']);
-
 
 Route::get('logout',function(Request $request){
     $request->session()->invalidate();

@@ -8,6 +8,34 @@ Breaking changes are marked with ⚠️.
 
 ## [Unreleased]
 
+## [v2.4.2] - 2025-01-02
+
+**Fixed**
+
+- Fix deprecated implictly nullable parameter by @datlechin in https://github.com/tighten/ziggy/pull/792
+
+## [v2.4.1] - 2024-11-21
+
+**Fixed**
+
+- Fix `qs` type dependencies
+
+## [v2.4.0] - 2024-11-09
+
+**Added**
+
+- Add ability to strictly type check route names by @bakerkretzmar and @Andyuu in https://github.com/tighten/ziggy/pull/787
+
+**Fixed**
+
+- Fix type definition for route() with only options by @bram-pkg in https://github.com/tighten/ziggy/pull/786
+- Fix `queryParams` return type by @bakerkretzmar in https://github.com/tighten/ziggy/pull/788
+
+**Changed**
+
+- Add note to use inject for vue 3 by @mhelaiwa in https://github.com/tighten/ziggy/pull/785
+- Update `README.md`. by @choowx in https://github.com/tighten/ziggy/pull/782
+
 ## [v2.3.1] - 2024-10-17
 
 **Fixed**
@@ -429,7 +457,10 @@ See [UPGRADING](UPGRADING.md#upgrading-from-1x-to-2x) for detailed upgrade instr
 
 For previous changes see the [Releases](https://github.com/tighten/ziggy/releases) page.
 
-[Unreleased]: https://github.com/tighten/ziggy/compare/v2.3.1...HEAD
+[Unreleased]: https://github.com/tighten/ziggy/compare/v2.4.2...HEAD
+[v2.4.2]: https://github.com/tighten/ziggy/compare/v2.4.1...v2.4.2
+[v2.4.1]: https://github.com/tighten/ziggy/compare/v2.4.0...v2.4.1
+[v2.4.0]: https://github.com/tighten/ziggy/compare/v2.3.1...v2.4.0
 [v2.3.1]: https://github.com/tighten/ziggy/compare/v2.3.0...v2.3.1
 [v2.3.0]: https://github.com/tighten/ziggy/compare/v2.2.1...v2.3.0
 [v2.2.1]: https://github.com/tighten/ziggy/compare/v2.2.0...v2.2.1
