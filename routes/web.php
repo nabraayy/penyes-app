@@ -90,7 +90,7 @@ Route::get('/admin/penyas/listas',[AdminController::class,'listasPenya'])->name(
 Route::get('/admin/relaciones', [AdminController::class, 'viewRelations'])->name('admin.relations');
 
 // Ruta para gestionar las solicitudes
-Route::get('/admin/solicitudes', [AdminController::class, 'manageRequests'])->name('admin.solicitudes');
+Route::get('/admin/penyas/solicitudes', [AdminController::class, 'manageRequests'])->name('admin.solicitudes');
 
 //rutas usuario
 //Route::get('/user', [UserController::class, 'dashboard'])->name('user.dashboard');

@@ -100,5 +100,18 @@ class AdminController extends Controller
         $solicitudes = Request::all();  // Obtener todas las solicitudes
         return view('admin.requests.index', compact('solicitudes'));  // Vista de solicitudes
     }
+
+    //penyas
+    public function listasPenya(){
+        $penyas = Penya::withCount('members')->get();
+        return view('admin.penyas.listas', compact('penyas'));
+    }
+    public function solicitudPenya(){
+        $penyas = Penya::withCount('members')->get();
+        return view('admin.penyas.create', compact('penyas'));
+
+    }
+   
+    
 }
 

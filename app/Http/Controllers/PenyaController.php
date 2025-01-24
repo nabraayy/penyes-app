@@ -55,4 +55,5 @@ class PenyaController extends Controller
 
         return redirect()->route('penyas.index')->with('success', 'Peña eliminada exitosamente.');
     }
+    
 }

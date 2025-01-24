@@ -72,4 +72,9 @@ class User extends Authenticatable
     {
         return $this->role_id === 2; // Verifica si el usuario tiene el rol 'User'
     }
+    public function penya()
+    {
+    return $this->belongsTo(Penya::class, 'penya_id');
+    }
+
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+    <title>Penyes</title>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
        body {
@@ -93,7 +93,7 @@
         <div class="logo">
             <img src="logo.jpg" alt="Logo">
         </div>
-        <h1>WELCOME {{ Auth::user()->name }}</h1>
+        <h1>WELCOME  {{ Auth::user()->name }}</h1>
         <nav class="home">
             <ul class="nav-links">
                 @auth
@@ -116,7 +116,7 @@
     <div class="action-buttons">
         <a href="{{ route('dashboard') }}" class="action-button">Home</a>
         <a href="{{route('admin.penyas.listas')}}" class="action-button">Listado de Peñas</a>
-        <a href="" class="action-button">Solicitar Unión a Peña</a>
+        <a href="{{route('admin.penyas.create')}}" class="action-button">Solicitar Unión a Peña</a>
     </div>
 </body>
 </html>
