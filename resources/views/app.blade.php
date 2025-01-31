@@ -40,9 +40,9 @@
         </section>
 
         <section class="photos-section">
-            <h3>Fotos tradicionales</h3>
+            <h2>Fotos tradicionales</h2>
             <div class="carousel">
-                <button class="carousel-btn left">&lt;</button>
+                <button class="carousel-btn left">&lt;</button> 
                 <div class="carousel-images">
                     <img src="https://www.elheraldo.com.ec/wp-content/uploads/2024/03/FOTO-100.jpg" alt="Photo 1">
                     <img src="https://s3.ppllstatics.com/lasprovincias/www/multimedia/201809/28/media/cortadas/129454301--624x415.jpg" alt="Photo 2">
@@ -54,7 +54,7 @@
         </section>
 
         <section class="program">
-            <h3>Programa de fiestas</h3>
+            <h2>Programa de fiestas</h2>
             <div class="program_pdf">
                 <iframe
                     src="{{ asset('pdf/libro.pdf') }}"
@@ -66,7 +66,7 @@
         </section>
 
         <section class="about-us">
-            <h3>Sobre nosotros</h3>
+            <h2>Sobre nosotros</h2>
             <div class="about-content">
                 <p>Somos un grupo de peñas del pueblo, unidos por la pasión de mantener vivas nuestras tradiciones. En cada fiesta, nos encargamos de organizar actividades que fomentan la alegría, la unión y el orgullo de nuestra cultura.
 
@@ -78,17 +78,16 @@
         </section>
 
         <section class="location">
-            <h3>Donde encontrarnos</h3>
-            <div class="map-container">
-                <div class="map-placeholder" id="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.9881997197826!2d-0.16296322348409323!3d39.852097489810674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd600f9b68a12811%3A0x9276403b60cb4465!2sC.%20San%20Joaquin%2C%2012520%20Nules%2C%20Castell%C3%B3n!5e0!3m2!1ses!2ses!4v1733766858957!5m2!1ses!2ses" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </section>
+        <h2>Donde Encontrarnos</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.9881997197826!2d-0.16296322348409323!3d39.852097489810674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd600f9b68a12811%3A0x9276403b60cb4465!2sC.%20San%20Joaquin%2C%2012520%20Nules%2C%20Castell%C3%B3n!5e0!3m2!1ses!2ses!4v1733766858957!5m2!1ses!2ses"
+                allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
     </main>
 
     <footer class="footer">
-        <p>FOOTER</p>
+        <p>&copy; 2025 PenyApp. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
@@ -324,15 +323,15 @@ body {
     text-align: center;
     padding: 20px;
 }
-
-.map-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-height: calc(100vh - 200px); /* Altura máxima disponible dejando espacio para el footer */
-    margin: 0 auto;
+.map-container iframe {
+            width: 90%;
+            height: 400px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+
 
 #map {
     width: 90%;

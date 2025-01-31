@@ -143,6 +143,7 @@
                     <option value="{{ $penya->id }}">{{ $penya->nombre }}</option>
                 @endforeach
             </select>
+            @endif
 
             <label for="name">Nombre Completo</label>
             <input type="text" id="name" name="name" value="{{ Auth::user()->name }}" readonly>

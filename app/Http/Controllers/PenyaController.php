@@ -10,12 +10,12 @@ class PenyaController extends Controller
     public function index()
     {
         $penyas = Penya::all();
-        return view('penyas.index', compact('penyas'));
+        return view('admin.penyas.index', compact('penyas'));
     }
 
     public function create()
     {
-        return view('penyas.create');
+        return view('admin.penyas.create');
     }
 
     public function store(Request $request)
@@ -26,13 +26,13 @@ class PenyaController extends Controller
 
         Penya::create($request->all());
 
-        return redirect()->route('penyas.index')->with('success', 'Peña creada exitosamente.');
+        return redirect()->route('admin.penyas.index')->with('success', 'Peña creada exitosamente.');
     }
 
     public function edit($id)
     {
         $penya = Penya::findOrFail($id);
-        return view('penyas.edit', compact('penya'));
+        return view('admin.penyas.edit', compact('penya'));
     }
 
     public function update(Request $request, $id)
@@ -45,7 +45,7 @@ class PenyaController extends Controller
 
         $penya->update($request->all());
 
-        return redirect()->route('penyas.index')->with('success', 'Peña actualizada exitosamente.');
+        return redirect()->route('admin.penyas.index')->with('success', 'Peña actualizada exitosamente.');
     }
 
     public function destroy($id)
@@ -53,7 +53,7 @@ class PenyaController extends Controller
         $penya = Penya::findOrFail($id);
         $penya->delete();
 
-        return redirect()->route('penyas.index')->with('success', 'Peña eliminada exitosamente.');
+        return redirect()->route('admin.penyas.index')->with('success', 'Peña eliminada exitosamente.');
     }
     
 }

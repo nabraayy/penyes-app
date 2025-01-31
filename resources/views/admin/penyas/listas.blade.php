@@ -111,9 +111,9 @@
 </head>
 <body>
 <header class="header">
-    <div class="logo">
-        <img src="logo.jpg" alt="Logo">
-    </div>
+        <div class="logo">
+            <img src="logo.jpg">
+        </div>
     <h1>Listado de Peñas</h1>
     <nav class="home">
         <ul class="nav-links">

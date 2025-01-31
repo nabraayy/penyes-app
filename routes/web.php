@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PenyaController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
@@ -82,7 +83,7 @@ Route::delete('/admin/users/{id}', [AdminController::class, 'deleteUser'])->name
 
 // Rutas para la administración de Peñas
 Route::get('/admin/penyas', [AdminController::class, 'managePenyas'])->name('admin.penyas');
-Route::get('/admin/penyas/create', [AdminController::class, 'createPenya'])->name('admin.penyas.create');
+Route::get('/admin/penyas/create', [AdminController::class, 'create'])->name('admin.penyas.create');
 Route::get('/admin/penyas/{id}/edit', [AdminController::class, 'editPenya'])->name('admin.penyas.edit');
 Route::delete('/admin/penyas/{id}', [AdminController::class, 'deletePenya'])->name('admin.penyas.delete');
 Route::get('/admin/penyas/listas',[AdminController::class,'listasPenya'])->name('admin.penyas.listas');

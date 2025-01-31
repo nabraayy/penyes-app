@@ -59,7 +59,7 @@ class AdminController extends Controller
     }
 
     // Crear una nueva peña
-    public function createPenya()
+    public function create()
     {
         return view('admin.penyas.create');  // Vista para crear una nueva peña
     }
