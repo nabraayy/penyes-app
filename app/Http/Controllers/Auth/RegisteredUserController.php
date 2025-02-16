@@ -39,7 +39,7 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'data_of_birth'=>$request->year,
+            'date_of_birth'=>$request->date,
             'password' => Hash::make($request->password),
             'role_id'=>2,
         ]);
@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect('user');
       
     }
     public function redirectTo()
@@ -56,12 +56,13 @@ class RegisteredUserController extends Controller
         $user = Auth::user();
 
         if ($user->role == 1) {
-            return redirect('/admin-dashboard');
+            return redirect('/admin.dashboard');
         }
 
         if ($user->role == 2) {
-            return redirect('/user-dashboard');
+            return redirect('/user.dashboard');
         }
+        
 
         return redirect('/default-page');
     }

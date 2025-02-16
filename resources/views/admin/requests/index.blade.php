@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver Todas las Peñas</title>
+    <title>Relaciones entre Usuarios y Peñas</title>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -135,25 +135,6 @@
             background-color: #218838;
         }
 
-        .add-button {
-            background-color: #ffc107;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            display: inline-block;
-            margin-top: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .add-button:hover {
-            background-color: #e0a800;
-            transform: scale(1.05);
-        }
-
         .back-button {
             background-color: #6c757d;
             color: white;
@@ -171,11 +152,6 @@
         .back-button:hover {
             background-color: #5a6268;
             transform: scale(1.05);
-        }
-
-        .buttons-container {
-            display: flex;
-            gap: 10px;
         }
     </style>
 </head>
@@ -201,36 +177,36 @@
 </header>
 
 <main class="main-content">
-    <h2>Lista de Peñas</h2>
+    <h2>Solicitudes Usuarios </h2>
     <table class="admin-table">
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Miembros</th>
+                <th>Usuario</th>
+                <th>Peña</th>
+                <th>Motivo</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($penyas as $penya)
-                <tr>
-                    <td>{{ $penya->name }}</td>
-                    <td>{{ $penya->description }}</td>
-                    <td>{{ $penya->members }}</td>
-                    
-                    <td class="buttons-container">
-                        <a href="{{ route('admin.penyas.edit', ['id' => $penya->id]) }}" class="edit-button">Modificar</a>
-                        <form action="{{ route('admin.penyas.delete', ['id' => $penya->id]) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="delete-button">Eliminar</button>
-                        </form>
-                    </td>
-                </tr>
+        @foreach($requests as $request)
+            <tr>
+                <td>{{ $request->user->name }}</td>
+                <td>{{ $request->penya->name }}</td>
+                <td>{{ $request->description }}</td>
+                <td>
+                    <form action="{{ route('admin.requests.accept', $request->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        <button type="submit" class="btn btn-success">Aceptar</button>
+                    </form>
+                    <form action="{{ route('admin.requests.reject', $request->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Rechazar</button>
+                    </form>
+                </td>
+            </tr>
             @endforeach
         </tbody>
     </table>
-    <a href="{{ route('admin.penyas.create') }}" class="add-button">Añadir Nueva Peña</a>
     <a href="{{ route('admin.dashboard') }}" class="back-button">Volver al Panel de Administración</a>
 </main>
 </body>

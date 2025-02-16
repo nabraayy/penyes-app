@@ -162,7 +162,7 @@
             <li class="nav-item">
                 <form action="{{route('logout')}}" method="POST" class="logout-form">
                 @csrf
-                <button type="submit class="logout-button">Logout</button>
+                <button type="submit" class="logout-button">Logout</button>
                 </form>
             </li>
 
@@ -187,13 +187,6 @@
                 <td>Ver, añadir, modificar o eliminar usuarios registrados.</td>
                 <td>
                     <a href="{{route('admin.users')}}" class="action-button">Ver Usuarios</a>
-                    <a href="{{route('admin.users.create')}}" class="add-button">Añadir Usuario</a>
-                    <a href="{{route('admin.users.edit', ['id' => 1])}}" class="edit-button">Modificar Usuario</a>
-                    <form action="{{ route('admin.users.delete', ['id' => 1]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="delete-button">Eliminar Usuario</button>
-                    </form>
                 </td>
             </tr>
             <!-- Peñas -->
@@ -202,26 +195,19 @@
                 <td>Ver, añadir, modificar o eliminar peñas creadas.</td>
                 <td>
                     <a href="{{route('admin.penyas')}}" class="action-button">Ver Peñas</a>
-                    <a href="{{route('admin.penyas.create')}}" class="add-button">Añadir Peña</a>
-                    <a href="{{route('admin.penyas.edit', ['id'=>1])}}" class="edit-button">Modificar Peña</a>
-                    <form action="{{ route('admin.penyas.delete', ['id' => 1]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="delete-button">Eliminar Peña</button>
-                    </form>
                 </td>
             </tr>
             <!-- Relación Usuarios-Peñas -->
             <tr>
-                <td>Ver Usuarios y sus Peñas</td>
+                <td>Ver Usuarios ,sus Peñas </td>
                 <td>Consulta a qué peña pertenece cada usuario registrado.</td>
-                <td><a href="{{route('admin.relations')}}" class="action-button">Ver Relaciones</a></td>
+                <td><a href="{{route('admin.relations.index')}}" class="action-button">Ver Relaciones</a></td>
             </tr>
             <!-- Solicitudes -->
             <tr>
-                <td>Aceptar Solicitudes</td>
-                <td>Gestiona y acepta las solicitudes pendientes de los usuarios.</td>
-                <td><a href="{{route('admin.solicitudes')}}" class="action-button">Gestionar Solicitudes</a></td>
+                <td>Solicitudes</td>
+                <td>Solicitudes de los usuarios a unirse a peñas</td>
+                <td><a href="{{route('admin.requests')}}" class="action-button">Ver Solicitudes</a></td>
             </tr>
         </tbody>
     </table>

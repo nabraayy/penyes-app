@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitar Unión a Peña</title>
+    <title>Añadir Peña</title>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -14,51 +14,19 @@
             background-color: #f4f4f9;
         }
 
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #f0f0f0;
-            padding: 10px 20px;
-            border-bottom: 1px solid #050505;
-        }
-
-        .header .logo img {
-            max-width: 140px;
-            max-height: 140px;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .header .logo img:hover {
-            transform: scale(1.1);
-        }
-
-        .header h1 {
-            font-size: 24px;
-            font-weight: 500;
-        }
-
-        .nav-links {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .content {
-            margin: 20px;
-            padding: 20px;
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
             background: white;
-            border-radius: 8px;
+            padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
         }
 
-        .form-container {
-            margin-top: 20px;
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
         form {
@@ -67,39 +35,37 @@
             gap: 15px;
         }
 
-        label {
-            font-weight: bold;
-        }
-
-        input, select, textarea, button {
+        input, textarea {
+            width: 100%;
             padding: 10px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            border: 1px solid #ddd;
             font-size: 16px;
         }
 
         button {
-            background-color: #007BFF;
+            background-color: #28a745;
             color: white;
+            padding: 10px;
             border: none;
-            font-weight: bold;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            font-size: 16px;
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #218838;
         }
 
         .back-button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #007BFF;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            background-color: #007bff;
             color: white;
-            text-decoration: none;
+            padding: 10px;
             border-radius: 5px;
-            font-weight: bold;
-            display: inline-block;
+            text-decoration: none;
         }
 
         .back-button:hover {
@@ -108,53 +74,15 @@
     </style>
 </head>
 <body>
-<header class="header">
-    <div class="logo">
-        <img src="logo.jpg" alt="Logo">
-    </div>
-    <h1>Solicitar Unión a Peña</h1>
-    <nav class="home">
-        <ul class="nav-links">
-            @auth
-                <li class="nav-item user-name">{{ Auth::user()->name }}</li>
-                <li class="nav-item">
-                    <form action="{{ route('logout') }}" method="POST" class="logout-form">
-                        @csrf
-                        <button type="submit" class="logout-button">Logout</button>
-                    </form>
-                </li>
-            @endauth
-        </ul>
-    </nav>
-</header>
-
-<div class="content">
-    <h2>Formulario de Solicitud</h2>
-    <div class="form-container">
-        <form action="{{ route('admin.penyas.create') }}" method="POST">
+    <div class="container">
+        <h2>Añadir Nueva Peña</h2>
+        <form action="{{ route('admin.penyas.store') }}" method="POST">
             @csrf
-            <label for="penya">Elige la Peña</label>
-            @if ($penyas->isEmpty())
-                <p>No hay peñas disponibles</p>
-            @else
-            <select name="penya_id" id="penya" required>
-                <option value="">Seleccionar una Peña</option>
-                @foreach ($penyas as $penya)
-                    <option value="{{ $penya->id }}">{{ $penya->nombre }}</option>
-                @endforeach
-            </select>
-            @endif
-
-            <label for="name">Nombre Completo</label>
-            <input type="text" id="name" name="name" value="{{ Auth::user()->name }}" readonly>
-
-            <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe un mensaje para los administradores..."></textarea>
-
-            <button type="submit">Enviar Solicitud</button>
+            <input type="text" name="name" placeholder="Nombre de la Peña" required>
+            <textarea name="description" placeholder="Descripción" rows="4" required></textarea>
+            <button type="submit">Añadir Peña</button>
         </form>
+        <a href="{{ route('admin.dashboard') }}" class="back-button">Volver a Peñas</a>
     </div>
-    <a href="{{ route('dashboard') }}" class="back-button">Volver</a>
-</div>
 </body>
 </html>

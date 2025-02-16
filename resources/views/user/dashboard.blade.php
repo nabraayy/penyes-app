@@ -268,59 +268,43 @@
 </header>
 
 <main>
-    <section class="hero">
-        <img src="https://i.pinimg.com/550x/2b/50/54/2b5054e746634ef536e983cda46db5fd.jpg" alt="Hero Image">
-    </section>
+    
 
     @auth
     <div class="action-buttons">
-        <a href="{{ route('admin.penyas.listas') }}" class="action-button">Listado de Peñas</a>
-        <a href="{{ route('admin.penyas.create') }}" class="action-button">Solicitar Unión a Peña</a>
+        <a href="{{ route('user.listado') }}" class="action-button">Listado de Peñas</a>
+        <a href=" {{route('user.request')}} " class="action-button">Solicitar Unión a Peña</a>
+        <a href=" {{route('user.lottery')}} " class="action-button">Ver sorteo</a>
     </div>
     @endauth
-    <section class="photos-section">
-            <h2>Fotos tradicionales</h2>
-            <div class="carousel">
-                <button class="carousel-btn left">&lt;</button>
-                <div class="carousel-images">
-                    <img src="https://www.elheraldo.com.ec/wp-content/uploads/2024/03/FOTO-100.jpg" alt="Photo 1">
-                    <img src="https://s3.ppllstatics.com/lasprovincias/www/multimedia/201809/28/media/cortadas/129454301--624x415.jpg" alt="Photo 2">
-                    <img src="https://torogestion.com/wp-content/uploads/2024/05/277790319_3175403629453207_1787865433349977677_n-1080x675.jpg" alt="Photo 1">
-                    <img src="https://s2.ppllstatics.com/lasprovincias/www/multimedia/202011/05/media/cortadas/154984790--1248x772.jpg" alt="Photo 2">
-                </div>
-                <button class="carousel-btn right">&gt;</button>
-            </div>
-        </section>
-        <section class="program">
-            <h2>Programa de fiestas</h2>
-            <div class="program_pdf">
-                <iframe
-                    src="{{ asset('pdf/libro.pdf') }}"
+    
+    <div>
+    <h3>Estado de tus Solicitudes</h3>
+    @if(auth()->user()->requests->isNotEmpty())
+        <ul>
+            @foreach(auth()->user()->requests as $request)
+                <li>
+                    Tu solicitud para "<strong>{{ $request->penya->name }}</strong>" está:
+                    <strong>
+                        @if($request->status == 'pending')
+                            <span style="color: orange;">Pendiente</span>
+                        @elseif($request->status == 'accepted')
+                            <span style="color: green;">Aceptada</span>
+                        @else
+                            <span style="color: red;">Rechazada</span>
+                        @endif
+                    </strong>
+                </li>
+            @endforeach
+        </ul>
+    @else
+        <p>No tienes solicitudes pendientes.</p>
+    @endif
+</div>
 
-                    class="pdf-frame">
-                </iframe>
-                <button class="program_button">Ver en Pantalla Completa</button>
-            </div>
-        </section>
-        <section class="about-us">
-            <h2>Sobre nosotros</h2>
-            <div class="about-content">
-                <p>Somos un grupo de peñas del pueblo, unidos por la pasión de mantener vivas nuestras tradiciones. En cada fiesta, nos encargamos de organizar actividades que fomentan la alegría, la unión y el orgullo de nuestra cultura.
+        
 
-                Uno de los momentos más esperados es el sorteo de carafales, donde se asignan de manera justa los espacios para disfrutar de los eventos taurinos. Este sorteo no solo es una tradición, sino también un símbolo de igualdad y convivencia en nuestra comunidad.
-
-                Nuestro objetivo es seguir celebrando y transmitiendo estas tradiciones a las futuras generaciones, manteniendo el espíritu de nuestras fiestas vivas.
-                </p>
-            </div>
-        </section>
-
-    <section class="location">
-        <h2>Donde Encontrarnos</h2>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.9881997197826!2d-0.16296322348409323!3d39.852097489810674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd600f9b68a12811%3A0x9276403b60cb4465!2sC.%20San%20Joaquin%2C%2012520%20Nules%2C%20Castell%C3%B3n!5e0!3m2!1ses!2ses!4v1733766858957!5m2!1ses!2ses"
-                allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </section>
+    
 </main>
 
 <footer class="footer">

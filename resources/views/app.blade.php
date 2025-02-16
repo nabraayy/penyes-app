@@ -64,7 +64,7 @@
                 <button class="program_button">Ver en Pantalla Completa</button>
             </div>
         </section>
-
+        
         <section class="about-us">
             <h2>Sobre nosotros</h2>
             <div class="about-content">
@@ -74,6 +74,9 @@
 
                 Nuestro objetivo es seguir celebrando y transmitiendo estas tradiciones a las futuras generaciones, manteniendo el espíritu de nuestras fiestas vivas.
                 </p>
+                <div class="action-buttons">
+           
+        </div>
             </div>
         </section>
 

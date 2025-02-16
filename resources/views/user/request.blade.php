@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de Peñas</title>
+    <title>Solicitar Unión a Peña</title>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -49,17 +49,6 @@
             justify-content: center;
         }
 
-        .nav-link {
-            text-decoration: none;
-            color: #000000;
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .nav-link:hover {
-            color: #A9A9A9;
-        }
-
         .content {
             margin: 20px;
             padding: 20px;
@@ -68,40 +57,49 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .table-container {
+        .form-container {
             margin-top: 20px;
-            overflow-x: auto;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        table th, table td {
+        label {
+            font-weight: bold;
+        }
+
+        input, select, textarea, button {
             padding: 10px;
-            text-align: left;
+            border-radius: 5px;
             border: 1px solid #ddd;
+            font-size: 16px;
         }
 
-        table th {
+        button {
             background-color: #007BFF;
             color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        table tr:nth-child(even) {
-            background-color: #f2f2f2;
+        button:hover {
+            background-color: #0056b3;
         }
 
         .back-button {
+            margin-top: 10px;
             padding: 10px 20px;
             background-color: #007BFF;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-            transition: background-color 0.3s ease;
+            display: inline-block;
         }
 
         .back-button:hover {
@@ -111,10 +109,10 @@
 </head>
 <body>
 <header class="header">
-        <div class="logo">
-            <img src="logo.jpg">
-        </div>
-    <h1>Listado de Peñas</h1>
+    <div class="logo">
+        <img src="logo.jpg" alt="Logo">
+    </div>
+    <h1>Solicitar Unión a Peña</h1>
     <nav class="home">
         <ul class="nav-links">
             @auth
@@ -131,29 +129,29 @@
 </header>
 
 <div class="content">
-    <h2>Peñas y sus Miembros</h2>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre de la Peña</th>
-                    <th>Descripcion</th>
-                    <th>Miembros</th>
-                    <th>Año formación</th>
-                </tr>
-            </thead>
-            <tbody>
+    <h2>Formulario de Solicitud</h2>
+    <div class="form-container">
+        <form action="{{ route('user.request') }}" method="POST">
+            @csrf
+            <label for="penya">Elige la Peña</label>
+            @if ($penyas->isEmpty())
+                <p>No hay peñas disponibles</p>
+            @else
+            <select name="penya_id" id="penya" required>
+                <option value="">Seleccionar una Peña</option>
                 @foreach ($penyas as $penya)
-                <tr>
-                    <td><strong>{{ $penya->name }}</strong></td>
-                    <td>{{ $penya->description}}</td>
-                    <td>{{ $penya->members_count }}</td>
-                </tr>
+                    <option value="{{ $penya->id }}">{{ $penya->name }}</option>
                 @endforeach
-            </tbody>
-        </table>
+            </select>
+            @endif
+
+            <label for="description">Mensaje</label>
+            <textarea id="description" name="description" rows="4" placeholder="Escribe un mensaje para los administradores..."></textarea>
+
+            <button type="submit">Enviar Solicitud</button>
+        </form>
     </div>
-    <a href="{{ route('dashboard') }}" class="back-button">Volver</a>
+    <a href="{{ route('user.dashboard') }}" class="back-button">Volver</a>
 </div>
 </body>
 </html>

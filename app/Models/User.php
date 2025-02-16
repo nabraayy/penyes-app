@@ -9,7 +9,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasRoles;
+    
     use HasFactory, Notifiable;
 
     /**
@@ -74,7 +74,13 @@ class User extends Authenticatable
     }
     public function penya()
     {
-    return $this->belongsTo(Penya::class, 'penya_id');
+    return $this->belongsToMany(Penya::class,'relations','user_id','penya_id');
+                
     }
+    public function requests()
+{
+    return $this->hasMany(Requests::class);
+}
+
 
 }

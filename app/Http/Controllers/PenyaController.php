@@ -4,24 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Penya;
-
+use App\Models\User;
 class PenyaController extends Controller
 {
     public function index()
     {
-        $penyas = Penya::all();
-        return view('admin.penyas.index', compact('penyas'));
+       
+        $penyas = Penya::withCount('members')->get();
+        return view('admin.penyas.listas', compact('penyas'));
     }
 
     public function create()
     {
         return view('admin.penyas.create');
     }
-
+    
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'descripcion' => 'nullable|string',
+            'formacion_anio' => 'required|integer|min:1900|max:' . date('Y'),
         ]);
 
         Penya::create($request->all());
@@ -41,6 +44,7 @@ class PenyaController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
+            'descripcion' => 'nullable|string',
         ]);
 
         $penya->update($request->all());
@@ -55,5 +59,27 @@ class PenyaController extends Controller
 
         return redirect()->route('admin.penyas.index')->with('success', 'Peña eliminada exitosamente.');
     }
-    
+    public function request()
+    {
+        $penya = User::all();
+        return view('user.request');
+    }
+    public function listado()
+    {
+        $penyas = Penya::all();
+
+        return view('user.listadopenyas', compact('penyas'));
+    }
+
+    // app/Http/Controllers/PenyaController.php
+    public function show($id)
+    {
+        // Obtener la peña y los miembros aceptados
+        $penya = Penya::with(['users' => function($query) {
+            $query->wherePivot('estado', 'aceptada');  // Filtrar solo los miembros aceptados
+        }])->findOrFail($id);
+
+        return view('penya.show', compact('penya'));
+    }
+
 }

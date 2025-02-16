@@ -153,7 +153,7 @@
             </tbody>
         </table>
     </div>
-    <a href="{{ route('dashboard') }}" class="back-button">Volver</a>
+    <a href="{{ route('user.dashboard') }}" class="back-button">Volver</a>
 </div>
 </body>
 </html>

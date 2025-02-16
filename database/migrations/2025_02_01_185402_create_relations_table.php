@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('penyas', function (Blueprint $table) {
+        Schema::create('relations', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->text('descripcion')->nullable();
-            $table->integer('members')->default(0);
-            // $table->foreignId('user_id')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Relación con users
+            $table->foreignId('penya_id')->constrained()->onDelete('cascade'); // Relación con penyas
+            $table->enum('status', ['pendiente', 'aceptada', 'rechazada'])->default('pendiente');
             $table->timestamps();
-
-            // $table->foreign('user_id')->reference('id')->on('users')->onDelete('set null');
         });
     }
 
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('penyas');
+        Schema::dropIfExists('relations');
     }
 };

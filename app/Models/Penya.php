@@ -9,20 +9,23 @@ class Penya extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'descripcion', 'miembros', 'user_id'];
+    protected $fillable = ['name', 'description', 'members', 'user_id'];
+   
     
     /**
      * Relación con el modelo User (usuario que creó la peña).
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
     }
     public function members(){
-        return $this->hasMany(User::class,'penya_id');
+        
+        return $this->hasMany(User::class);
     }
-    public function createPenya(){
-        $penyas=Penya::all();
-        return view('admin.penyas.create', compact('penyas'));
+    public function users(){
+        
+        return $this->belongsToMany(User::class,'user_id','penya_id','relations');
+                   
     }
 }

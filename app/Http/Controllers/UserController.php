@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\UserController;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User; // Importa el modelo User
@@ -10,7 +10,8 @@ class UserController extends Controller
     //  Muestra el dashboard del usuario
     public function dashboard()
     {
-        return view('user.dashboard');
+        
+        return view('user');
     }
 
     //  Redirección después de la autenticación
@@ -19,7 +20,7 @@ class UserController extends Controller
         if ($user->isAdmin()) {
             return redirect('/Tareas/penyes-app/resources/views/admin/dashboard.blade.php');
         } elseif ($user->isUser) {
-            return redirect('/Tareas/penyes-app/resources/views/user/dashboard.blade.php');
+            return redirect('/Tareas/penyes-app/resources/views/user');
         }
         return redirect('/Tareas/penyes-app/resources/views/dashboard.blade.php');
     }
@@ -94,10 +95,7 @@ class UserController extends Controller
     }
 
     // Nuevo método: Gestionar solicitudes
-    public function requests()
-    {
-        // Implementa lógica para solicitudes aquí
-    }
+    
 
     // Nuevo método: Aprobar solicitud
     public function approveRequest($id)
