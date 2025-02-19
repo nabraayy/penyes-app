@@ -146,9 +146,17 @@
     @endif
 
     <!-- Botón para realizar el sorteo debajo de los participantes -->
-    <div class="button-container">
-        <a href="{{ route('user.start.lottery') }}" class="sort-button">Realizar Sorteo</a>
-    </div>
+    <!-- Mostrar el botón solo si el usuario tiene el rol de 'admin' -->
+    @if(auth()->user() && auth()->user()->role_id == \App\Models\Role::ADMIN)
+        <form action="{{ route('lottery.draw') }}" method="POST">
+            @csrf
+            <input type="hidden" name="year" value="{{ $year }}">
+            <button type="submit" class="btn btn-primary">Realizar Sorteo</button>
+        </form>
+    @endif
+
+
+
 
     <!-- Cuadrícula 9x6 para el sorteo -->
     <div class="grid-container">
@@ -161,10 +169,19 @@
         @endfor
     </div>
 
-    <!-- Botón para volver al dashboard -->
+    <!-- Botón para volver al dashboard, dependiendo del rol del usuario -->
+        <!-- Redirigir dependiendo del rol del usuario -->
     <div class="button-container">
-        <a href="{{ route('user.dashboard') }}" class="back-button">Volver</a>
+        @if(auth()->user()->role_id == \App\Models\Role::ADMIN)
+            <a href="{{ route('admin.dashboard') }}" class="back-button">Volver al Panel de Admin</a>
+        @else
+            <a href="{{ route('user.dashboard') }}" class="back-button">Volver a Mi Perfil</a>
+        @endif
     </div>
+
+
+</div>
+
 </div>
 
 </body>

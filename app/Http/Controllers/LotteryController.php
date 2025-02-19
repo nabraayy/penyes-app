@@ -47,7 +47,7 @@ class LotteryController extends Controller
         $penyas = Penya::all()->pluck('name', 'id');
         $locations = Location::where('year', $year)->get();
 
-        if (count($crews) === 0) {
+        if (count($penyas) === 0) {
             return back()->withErrors('No hay peñas disponibles para este año.');
         }
 
@@ -63,7 +63,7 @@ class LotteryController extends Controller
                 $coord = [$x, $y];
                 $isValidCoord = $this->isValidCoord($coord, $places);
                 if($isValidCoord){
-                    $places[$crewId] = $coord;
+                    $places[$penyaId] = $coord;
                 }
             }    
         }
@@ -73,7 +73,7 @@ class LotteryController extends Controller
             $locations[] = [
                 'x' => $coord[0], //x
                 'y' => $coord[1], //y
-                'crew_id' => $crewId, // Avoid assigning crew_id if it's "No Crew"
+                'penya_id' => $penyaId, // Avoid assigning crew_id if it's "No Crew"
                 'year' => $year
             ];
         }
@@ -82,7 +82,7 @@ class LotteryController extends Controller
             Location::create($location); 
         }
 
-        return redirect()->route('draw.show', ['year' => $year]);
+        return redirect()->route('lottery.draw', ['year' => $year]);
     }
 
 

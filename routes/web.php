@@ -78,8 +78,10 @@ Route::post('user/request', [RequestController::class, 'request']);
 
 
 //SORTEO CARAFAL
-Route::get('admin/lottery',[LotteryController::class,'show'])->name('admin.lottery');
-Route::get('start-lottery',[LotteryController::class,'lottery'])->name('user.start.lottery');
+Route::get('/admin/lottery',[LotteryController::class,'show'])->name('admin.lottery');
+Route::post('/admin/lottery/draw', [LotteryController::class, 'draw'])->name('lottery.draw');
+Route::get('/admin/lottery/{year?}', [LotteryController::class, 'show'])->name('lottery.show');
+
 
 //RUTAS ADMIN
 Route::middleware(['auth','role:admin'])->group(function(){
