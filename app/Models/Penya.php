@@ -9,6 +9,7 @@ class Penya extends Model
 {
     use HasFactory;
 
+    protected $table = 'penyas';
     protected $fillable = ['name', 'description', 'members', 'user_id'];
    
     
@@ -19,13 +20,16 @@ class Penya extends Model
     {
         return $this->hasMany(User::class);
     }
-    public function members(){
-        
+    public function members()
+    {    
         return $this->hasMany(User::class);
     }
-    public function users(){
-        
-        return $this->belongsToMany(User::class,'user_id','penya_id','relations');
-                   
+    public function users()
+    {    
+        return $this->belongsToMany(User::class,'user_id','penya_id','relations');      
+    }
+    public function requests()
+    {
+        return $this->hasMany(Requests::class);
     }
 }

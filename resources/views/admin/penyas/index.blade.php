@@ -216,7 +216,7 @@
                 <tr>
                     <td>{{ $penya->name }}</td>
                     <td>{{ $penya->description }}</td>
-                    <td>{{ $penya->members }}</td>
+                    <td>{{ $penya->nMembers }}</td>
                     
                     <td class="buttons-container">
                         <a href="{{ route('admin.penyas.edit', ['id' => $penya->id]) }}" class="edit-button">Modificar</a>

@@ -40,8 +40,8 @@
 
             <div class="form-footer">
                 @if (Route::has('password.request'))
-                    <a href="{{ route('password.request') }}" class="forgot-password">
-                        {{ __('Forgot your password?') }}
+                    <a href="{{ route('register') }}" class="forgot-password">
+                        {{ __('You do not have an account?') }}
                     </a>
                 @endif
 

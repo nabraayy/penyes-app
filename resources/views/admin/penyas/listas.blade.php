@@ -139,7 +139,7 @@
                     <th>Nombre de la Peña</th>
                     <th>Descripcion</th>
                     <th>Miembros</th>
-                    <th>Año formación</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -147,7 +147,7 @@
                 <tr>
                     <td><strong>{{ $penya->name }}</strong></td>
                     <td>{{ $penya->description}}</td>
-                    <td>{{ $penya->members_count }}</td>
+                    <td>{{ $penya->nayara }}</td>
                 </tr>
                 @endforeach
             </tbody>

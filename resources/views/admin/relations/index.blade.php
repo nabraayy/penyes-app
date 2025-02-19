@@ -189,15 +189,15 @@
         <tbody>
             @foreach($relations as $relation)
                 <tr>
-                <td>{{ optional($relation->user)->name  ?? 'Usuario no encontrado'}}</td>
-                <td>{{ optional($relation->penya)->name  ?? 'Peña no encontrada'}}</td>
+                <td>{{ $relation->name  ?? 'Usuario no encontrado'}}</td>
+                <td>{{ $relation->penya->name  ?? 'Peña no encontrada'}}</td>
 
                     <td class="buttons-container">
                         <a href="{{ route('admin.relations.edit', ['id' => $relation->id]) }}" class="edit-button">Modificar</a>
                         <form action="{{ route('admin.relations.delete', ['id' => $relation->id]) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="delete-button">Eliminar</button>
+                            <button class="btn btn-md btn-danger" type="submit" class="delete-button">Eliminar</button>
                         </form>
                     </td>
                 </tr>

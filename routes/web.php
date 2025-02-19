@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminController;
 use Inertia\Inertia;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RequestController;
+use App\Http\Controllers\LotteryController;
 
 
 
@@ -77,7 +78,8 @@ Route::post('user/request', [RequestController::class, 'request']);
 
 
 //SORTEO CARAFAL
-Route::get('user/lottery',[RequestController::class,'lottery'])->name('user.lottery');
+Route::get('admin/lottery',[LotteryController::class,'show'])->name('admin.lottery');
+Route::get('start-lottery',[LotteryController::class,'lottery'])->name('user.start.lottery');
 
 //RUTAS ADMIN
 Route::middleware(['auth','role:admin'])->group(function(){

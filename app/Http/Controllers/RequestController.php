@@ -75,7 +75,7 @@ class RequestController extends Controller
         Relation::create([
             'user_id' => $user->id,
             'penya_id' => $penya->id,
-            'name' => $user->name, // Asegurar que el nombre del usuario se guarde
+ 
             'status' => 'aceptada',
         ]);
     
@@ -89,6 +89,11 @@ class RequestController extends Controller
  
          return redirect()->route('admin.requests')->with('error', 'Solicitud rechazada.');
      }
+     /*public function lottery()
+     {
+        $penyas=Penya::all();
+        return view('user.lottery', compact('penyas'));
+     }*/
         
 }
 

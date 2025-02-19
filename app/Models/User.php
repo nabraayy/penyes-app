@@ -74,13 +74,20 @@ class User extends Authenticatable
     }
     public function penya()
     {
-    return $this->belongsToMany(Penya::class,'relations','user_id','penya_id');
-                
+        return $this->hasOneThrough(
+            Penya::class,
+            Relation::class,
+            'user_id', // FK que referencia con user
+            'id',
+            'id',
+            'penya_id'
+        );        
     }
+
     public function requests()
-{
-    return $this->hasMany(Requests::class);
-}
+    {
+        return $this->hasMany(Requests::class);
+    }
 
 
 }

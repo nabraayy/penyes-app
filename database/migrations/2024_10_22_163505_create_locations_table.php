@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->integer('x');
             $table->integer('y');
-            $table->string('crew_id');
-            $table->date('year');
+            $table->unsignedBigInteger('penya_id');
             $table->timestamps();
+            // Clave foránea si 'penya_id' se relaciona con 'penyes'
+            $table->foreign('penya_id')->references('id')->on('penyes')->onDelete('cascade');
+
         });
     }
 

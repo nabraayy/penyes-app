@@ -96,6 +96,10 @@ class AdminController extends Controller
     public function managePenyas()
     {
         $penyas = Penya::all();  // Obtener todas las peñas
+        foreach($penyas as $penya){
+            $penya->nMembers = Relation::where('penya_id', $penya->id)->count();
+        }
+    
         return view('admin.penyas.index', compact('penyas'));  // Vista con todas las peñas
     }
 
@@ -133,6 +137,8 @@ class AdminController extends Controller
     public function viewRelations()
     {
         $relations = User::with('penya')->get();
+        // echo '<pre>';
+        // dd($relations->toArray());
           // Relación entre User y Peña
         return view('admin.relations.index', compact('relations'));
     }

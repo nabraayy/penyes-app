@@ -18,15 +18,15 @@
         /* Header styles */
         .header {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
             background-color: #f0f0f0;
             padding: 10px 20px;
             border-bottom: 1px solid #050505;
         }
 
         .header .logo img {
-            max-width: 120px;
+            max-width: 70px;
             border-radius: 50%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
@@ -61,174 +61,46 @@
             color: #666;
         }
 
-        .logout-button {
-            background-color: #d9534f;
-            color: white;
-            padding: 5px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .logout-button:hover {
-            background-color: #c9302c;
-        }
-
-        /* Hero section */
-        .hero {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .hero img {
-            width: 90%;
-            border-radius: 10px;
-        }
-        /* photos*/
-        .photos-section {
-            text-align: center;
-            padding: 40px;
-        }
-
-        .carousel {
+        /* Navbar section */
+        .navbar {
             display: flex;
-            align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        .carousel-btn {
-            background-color: #ddd;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 50%;
-            font-size: 18px;
-            z-index: 10;
-        }
-
-        .carousel-images {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 100%;
-        }
-
-        .carousel-images img {
-            width: 500px;
-            height: auto;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            margin-right: 20px;
-        }
-
-        /* Program section */
-        .program {
-            text-align: center;
-            position: relative;
-            padding: 20px;
-        }
-
-        .program_pdf {
-            position: relative;
-            display: inline-block;
-            width: 80%;
-            max-width: 800px;
-            height: 400px;
-            overflow: hidden;
-            transition: all 0.3s ease-in-out;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background: #f9f9f9;
-        }
-
-        .program_pdf.expanded {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 90%;
-            height: 90vh;
-            transform: translate(-50%, -50%);
-            z-index: 9999;
-            background: #fff;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .pdf-frame {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .program_button {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
+            gap: 15px;
             background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.2s;
+            padding: 10px;
+            border-radius: 8px;
         }
 
-        .program_button:hover {
-            background-color: #0056b3;
-        }
-        /* Buttons Section */
-        .action-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .action-button {
-            padding: 10px 20px;
-            background-color: #007BFF;
+        .navbar a {
             color: white;
             text-decoration: none;
-            border-radius: 5px;
             font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 5px;
             transition: background-color 0.3s ease;
         }
 
-        .action-button:hover {
+        .navbar a:hover {
             background-color: #0056b3;
         }
 
-        /* About us section */
-        .about-us {
-            text-align: center;
-            padding: 20px;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-            margin: 20px auto;
-            width: 90%;
+        .navbar .request-status {
+            color: white;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 5px;
         }
 
-        .about-us p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #333;
+        .request-status.pending {
+            background-color: orange;
         }
 
-        /* Map Section */
-        .location {
-            text-align: center;
-            padding: 20px;
+        .request-status.accepted {
+            background-color: green;
         }
 
-        .map-container iframe {
-            width: 90%;
-            height: 400px;
-            border-radius: 10px;
-            border: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .request-status.rejected {
+            background-color: red;
         }
 
         /* Footer */
@@ -267,45 +139,29 @@
     </nav>
 </header>
 
-<main>
-    
-
+<!-- Navigation Bar below the header with request status -->
+<div class="navbar">
     @auth
-    <div class="action-buttons">
-        <a href="{{ route('user.listado') }}" class="action-button">Listado de Peñas</a>
-        <a href=" {{route('user.request')}} " class="action-button">Solicitar Unión a Peña</a>
-        <a href=" {{route('user.lottery')}} " class="action-button">Ver sorteo</a>
-    </div>
-    @endauth
-    
-    <div>
-    <h3>Estado de tus Solicitudes</h3>
-    @if(auth()->user()->requests->isNotEmpty())
-        <ul>
+        <a href="{{ route('user.listado') }}">Listado de Peñas</a>
+        <a href="{{ route('user.request') }}">Solicitar Unión a Peña</a>
+        <a href="{{ route('admin.lottery') }}">Ver Sorteo</a>
+        <!-- Display the request status here -->
+        @if(auth()->user()->requests->isNotEmpty())
             @foreach(auth()->user()->requests as $request)
-                <li>
-                    Tu solicitud para "<strong>{{ $request->penya->name }}</strong>" está:
-                    <strong>
-                        @if($request->status == 'pending')
-                            <span style="color: orange;">Pendiente</span>
-                        @elseif($request->status == 'accepted')
-                            <span style="color: green;">Aceptada</span>
-                        @else
-                            <span style="color: red;">Rechazada</span>
-                        @endif
-                    </strong>
-                </li>
+                <div class="request-status 
+                    {{ $request->status == 'pending' ? 'pending' : '' }}
+                    {{ $request->status == 'accepted' ? 'accepted' : '' }}
+                    {{ $request->status == 'rejected' ? 'rejected' : '' }}">
+                    Solicitud {{ $request->status == 'pending' ? 'Pendiente' : ($request->status == 'accepted' ? 'Aceptada' : 'Rechazada') }}
+                </div>
             @endforeach
-        </ul>
-    @else
-        <p>No tienes solicitudes pendientes.</p>
-    @endif
+        @else
+            <div class="request-status">No tienes solicitudes pendientes</div>
+        @endif
+    @endauth
 </div>
 
-        
 
-    
-</main>
 
 <footer class="footer">
     <p>&copy; 2025 PenyApp. Todos los derechos reservados.</p>

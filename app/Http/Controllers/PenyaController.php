@@ -74,12 +74,10 @@ class PenyaController extends Controller
     // app/Http/Controllers/PenyaController.php
     public function show($id)
     {
-        // Obtener la peña y los miembros aceptados
-        $penya = Penya::with(['users' => function($query) {
-            $query->wherePivot('estado', 'aceptada');  // Filtrar solo los miembros aceptados
-        }])->findOrFail($id);
+        // Obtener la peña con sus usuarios (miembros)
+        $peña = Peña::with('users')->findOrFail($penya_id);
 
-        return view('penya.show', compact('penya'));
+        return view('penya', compact('penya'));
     }
 
 }

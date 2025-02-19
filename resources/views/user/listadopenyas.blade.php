@@ -139,7 +139,6 @@
                     <th>Nombre de la Peña</th>
                     <th>Descripcion</th>
                     <th>Miembros</th>
-                    <th>Año formación</th>
                 </tr>
             </thead>
             <tbody>

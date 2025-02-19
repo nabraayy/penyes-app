@@ -148,6 +148,8 @@
             background-color: #e0a800;
         }
     </style>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.2/js/bootstrap.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.2/css/bootstrap.min.css"/> -->
 </head>
 <body>
 <header class="header">
@@ -208,6 +210,11 @@
                 <td>Solicitudes</td>
                 <td>Solicitudes de los usuarios a unirse a peñas</td>
                 <td><a href="{{route('admin.requests')}}" class="action-button">Ver Solicitudes</a></td>
+            </tr>
+            <tr>
+                <td>Sorteo</td>
+                <td>Sorteo de las penyas</td>
+                <td><a href="{{route('admin.lottery')}}" class="action-button">Ver Sorteo</a></td>
             </tr>
         </tbody>
     </table>

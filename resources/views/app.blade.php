@@ -12,7 +12,7 @@
 
     <header class="header">
         <div class="logo">
-            <img src="logo.jpg" alt="Logo">
+            <img src="log.jpg" alt="Logo">
         </div>
         <h1>PENYAS APP</h1>
         <nav class="home">
@@ -27,17 +27,34 @@
                         </form>
                     </li>
                 @else
-                    <li class="nav-item"><a href="/register" class="nav-link">Register</a></li>
-                    <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+                    
+                    <div class="menu-container"> 
+                        <button class="menu-button" onclick="toggleMenu()"><img width="30" height="30" src="https://img.icons8.com/sf-black/64/bull.png" alt="bull"/></button>
+                        <div class="menu" id="menu">
+                        <li class="nav-item"><a href="/register" class="nav-link">Register</a></li>
+                        <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+                            <a href="#">Fotos</a>
+                            <a href="#">Programa</a>
+                            <a href="#">Sobre Nosotros</a>
+                            <a href="#">Ubicación</a>
+
+                        </div>
+                    </div>
+                   
                 @endauth
             </ul>
         </nav>
+       
     </header>
 
     <main>
         <section class="hero">
-            <img src="https://i.pinimg.com/550x/2b/50/54/2b5054e746634ef536e983cda46db5fd.jpg"  class="hero-image">
+            <img src="https://i.pinimg.com/550x/2b/50/54/2b5054e746634ef536e983cda46db5fd.jpg" class="hero-image">
+            <div class="hero-text">
+                <h1>Bienvenido a las penyas!</h1>
+            </div>
         </section>
+
 
         <section class="photos-section">
             <h2>Fotos tradicionales</h2>
@@ -46,8 +63,15 @@
                 <div class="carousel-images">
                     <img src="https://www.elheraldo.com.ec/wp-content/uploads/2024/03/FOTO-100.jpg" alt="Photo 1">
                     <img src="https://s3.ppllstatics.com/lasprovincias/www/multimedia/201809/28/media/cortadas/129454301--624x415.jpg" alt="Photo 2">
-                    <img src="https://torogestion.com/wp-content/uploads/2024/05/277790319_3175403629453207_1787865433349977677_n-1080x675.jpg" alt="Photo 1">
-                    <img src="https://s2.ppllstatics.com/lasprovincias/www/multimedia/202011/05/media/cortadas/154984790--1248x772.jpg" alt="Photo 2">
+                    <img src="https://torogestion.com/wp-content/uploads/2024/05/277790319_3175403629453207_1787865433349977677_n-1080x675.jpg" alt="Photo 3">
+                    <img src="https://s2.ppllstatics.com/lasprovincias/www/multimedia/202011/05/media/cortadas/154984790--1248x772.jpg" alt="Photo 4">
+                    <img src="https://nules.org/wp-content/uploads/2023/08/1er-PREMI-MILLOR-DISFRESSA-PENYA-XUPLIT-scaled.jpg">
+                    <img src="https://estaticos-cdn.prensaiberica.es/clip/03d88057-8e0f-4b3e-905c-96c0876b4221_16-9-discover-aspect-ratio_default_0.jpg">
+                    <img src="https://www.burladero.tv/u/fotografias/m/2020/7/18/f1280x720-165617_297292_5050.jpeg">
+                    <img src="https://s1.elespanol.com/2023/08/13/castilla-y-leon/region/salamanca/786431535_235332176_1706x1280.jpg">
+                    <img src="https://www.elperiodic.com/archivos/imagenes/noticias/2022/09/16/snm-0421.JPG">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjMco-2O6_LsHfm11_l5s2Fb30sgYmANqio-kJiOhgAjnSfZndjD07_VvuRjRWeuk7f8BywgBEDAc2W1v5e8ekyzJVdGCGFnR6IeN3z4t1TaFKeLu4Oa25kvtQ4epfq_k9l0frkLAHtPvE/s1600/TORO+PALHA+N%25C2%25BA+598+G-2+SANT+XOTXIM+2016++NULES+%2528CASTELL%25C3%2593N%2529.jpg">
+                    <img src="https://www.elperiodic.com/archivos/imagenes/noticias/2022/09/16/snm-0631.JPG">
                 </div>
                 <button class="carousel-btn right">&gt;</button>
             </div>
@@ -104,7 +128,35 @@ body {
     box-sizing: border-box;
     background-color: #f4f4f9;  /* Fondo suave */
 }
-
+/* menu */
+.menu-container{
+    position: relative
+    display:inline-block;
+}
+.menu-button{
+    color:black;
+    padding:5px 5px;
+    cursor: pointer;
+    border-radius: 6px; 
+}
+.menu{
+    display:none;
+    position:absolute;
+    background-color: #f4f4f4;
+    min-width: 50px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.menu a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+.menu a:hover {
+    background-color: #f1f1f1;
+}
 /* Header styles */
 .header {
     display: flex;
@@ -116,9 +168,9 @@ body {
 }
 
 .header .logo img {
-    max-width: 140px; /* Ajustamos el tamaño máximo */
-    max-height: 140px; /* Ajustamos la altura máxima */
-    border-radius: 50%; /* Hacemos la imagen redonda */
+    max-width: 100px; /* Ajustamos el tamaño máximo */
+    max-height: 100px; /* Ajustamos la altura máxima */
+    border-radius: 10%; /* Hacemos la imagen redonda */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregamos una sombra suave */
     transition: transform 0.3s ease; /* Animación para el hover */
 }
@@ -128,9 +180,14 @@ body {
 }
 
 /* Header title */
-.header h1 {
-    font-size: 24px;
-    font-weight: 500;  /* Peso medio */
+.hero-text {
+    font-size: 35px;
+    font-weight: 500;
+    position: absolute;
+    bottom: -110px;
+    right:20px;
+    text-align: right;
+      /* Peso medio */
 }
 
 /* Navigation styles */
@@ -354,46 +411,47 @@ body {
 </style>
 
 <script>
-    const carouselImages = document.querySelector('.carousel-images');
-const leftButton = document.querySelector('.carousel-btn.left');
-const rightButton = document.querySelector('.carousel-btn.right');
+document.addEventListener("DOMContentLoaded", () => {
+    const carouselImages = document.querySelector(".carousel-images");
+    const leftButton = document.querySelector(".carousel-btn.left");
+    const rightButton = document.querySelector(".carousel-btn.right");
 
-let index = 0;
+    let index = 0;
 
-function updateCarousel() {
-    const imageWidth = carouselImages.children[0].clientWidth + 20; // Incluye el margen
-    carouselImages.style.transform = translateX(${-index * imageWidth}px);
-}
-
-rightButton.addEventListener('click', () => {
-    if (index < carouselImages.children.length - 1) {
-        index++;
-        updateCarousel();
-    } else {
-        index = 0; // Reinicia al inicio
-        updateCarousel();
+    function updateCarousel() {
+        const imageWidth = carouselImages.children[0].clientWidth + 20;
+        carouselImages.style.transform = `translateX(${-index * imageWidth}px)`;
     }
+
+    rightButton.addEventListener("click", () => {
+        if (index < carouselImages.children.length - 1) {
+            index++;
+        } else {
+            index = 0;
+        }
+        updateCarousel();
+    });
+
+    leftButton.addEventListener("click", () => {
+        if (index > 0) {
+            index--;
+        } else {
+            index = carouselImages.children.length - 1;
+        }
+        updateCarousel();
+    });
+
+    // Pase automático
+    setInterval(() => {
+        if (index < carouselImages.children.length - 1) {
+            index++;
+        } else {
+            index = 0;
+        }
+        updateCarousel();
+    }, 3000);
 });
 
-leftButton.addEventListener('click', () => {
-    if (index > 0) {
-        index--;
-        updateCarousel();
-    } else {
-        index = carouselImages.children.length - 1; // Va al último
-        updateCarousel();
-    }
-});
-
-// Pase automático
-setInterval(() => {
-    if (index < carouselImages.children.length - 1) {
-        index++;
-    } else {
-        index = 0;
-    }
-    updateCarousel();
-}, 3000); // Cambia cada 3 segundos
 
 document.addEventListener('DOMContentLoaded', () => {
     const programPdf = document.querySelector('.program_pdf');
@@ -426,4 +484,12 @@ function initMap() {
             title: "Sant Juaquin"  // Título del marcador
         });
     }
+
+    //funcion menu
+    function toggleMenu(){
+        var menu =document.getElementById("menu");
+        menu.style.display=(menu.style.display === "block") ? "none" :"block";
+    }
+   
+    
 </script>
