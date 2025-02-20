@@ -11,14 +11,37 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #f4f4f9;
+            background-image: url('https://img.freepik.com/vector-premium/patron-costuras-ilustracion-toros-color-negro-estilo-arte-linea-sobre-fondo-blanco_460232-1948.jpg');
+        }
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
         }
 
+        .nav-item {
+            display: inline;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .nav-link:hover {
+            color: #A9A9A9;
+        }
         .header {
             display: flex;
+            color:white;
             align-items: center;
             justify-content: space-between;
-            background-color: #f0f0f0;
+            background-color:rgb(128, 0, 0);
             padding: 10px 20px;
             border-bottom: 1px solid #050505;
         }
@@ -51,23 +74,32 @@
             margin-bottom: 20px;
         }
 
-        .participants-list {
-            margin-bottom: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
+        
 
-        .participant {
-            padding: 10px;
-            background-color:rgb(147, 52, 236); /* Verde para diferenciarlo */
-            color: white;
-            font-weight: bold;
-            border-radius: 8px;
-            text-align: center;
-            width: 150px;
-        }
+        .participants-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    
+    .participants-table th, .participants-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .participants-table th {
+        background-color:rgb(0, 135, 34);
+        color: white;
+    }
+
+    .participants-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    
+    .participants-table tr:hover {
+        background-color: #ddd;
+    }
 
         .grid-container {
             display: grid;
@@ -85,7 +117,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f0f0f0;
+            background-color:rgb(67, 66, 66);
             border: 1px solid #ddd;
             font-weight: bold;
             border-radius: 8px;
@@ -94,7 +126,7 @@
         }
 
         .grid-item:hover {
-            background-color: #d6d6d6;
+            background-color:rgb(8, 8, 8);
             transform: scale(1.05);
         }
 
@@ -107,7 +139,7 @@
 
         .sort-button, .back-button {
             padding: 10px 20px;
-            background-color: #007BFF; /* Azul */
+            background-color:rgb(137, 0, 0); /* Azul */
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -119,34 +151,96 @@
         }
 
         .sort-button:hover, .back-button:hover {
-            background-color: #0056b3;
+            background-color:rgb(1, 114, 6);
+        }
+        .logout-button{
+            font-family: canveat;
+            border-radius:4px;
+            background-color:rgb(0, 103, 14);
+            color:white;
+            border: none;
+            text-align: center;
+            font-size: 18px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .logout-button span{
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+        .logout-button span:after{
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        .logout-button:hover span{
+            padding-right: 25px;
+        }
+        .logout-button:hover span:after{
+            opacity: 1;
+             right: 0;
         }
     </style>
 </head>
 <body>
 <header class="header">
-    <div class="logo">
-        <img src="logo.jpg">
-    </div>
+    
     <h1>Sorteo del Carafal</h1>
+    <nav class="home">
+        <ul class="nav-links">
+            @auth
+            <li class="nav-item user-name">{{ Auth::user()->name }}</li>
+            <li class="nav-item">
+                <form action="{{ route('logout') }}" method="POST" class="logout-form">
+                    @csrf
+                    <button type="submit" class="logout-button"><span>Logout</span></button>
+                </form>
+            </li>
+            @endauth
+        </ul>
+    </nav>
 </header>
 
 <div class="content">
     <h2>Participantes en el Sorteo</h2>
+    <!-- Botón para volver al dashboard, dependiendo del rol del usuario -->
+        <!-- Redirigir dependiendo del rol del usuario -->
+        <div class="button-container">
+        @if(auth()->user()->role_id == \App\Models\Role::ADMIN)
+            <a href="{{ route('admin.dashboard') }}" class="back-button">Volver al Panel de Admin</a>
+        @else
+            <a href="{{ route('user.dashboard') }}" class="back-button">Volver a Mi Perfil</a>
+        @endif
+    </div>
 
     <!-- Mostrar la lista de participantes -->
     @if(isset($penyas) && $penyas->count() > 0)
-    @foreach ($penyas as $penya)
-        <div class="participant">
-            {{ $penya->name }}
-        </div>
-    @endforeach
+    <table class="participants-table">
+        <thead>
+            <tr>
+                <th>Nombre de la Peña</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($penyas as $penya)
+                <tr>
+                    <td>{{ $penya->name }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
     @else
         <p>No hay participantes en el sorteo.</p>
     @endif
 
     <!-- Botón para realizar el sorteo debajo de los participantes -->
-    <!-- Mostrar el botón solo si el usuario tiene el rol de 'admin' -->
+   
     @if(auth()->user() && auth()->user()->role_id == \App\Models\Role::ADMIN)
         <form action="{{ route('lottery.draw') }}" method="POST">
             @csrf
@@ -160,24 +254,16 @@
 
     <!-- Cuadrícula 9x6 para el sorteo -->
     <div class="grid-container">
-        @for ($i = 0; $i < 54; $i++)
+        @for ($i = 0; $i < 20; $i++)
             <div class="grid-item">
                 @isset($places[$i])
-                    {{ $penyas[$i]->name }}
+                  <p>  {{ $penyas[$i]->name }}</p>
                 @endisset
             </div>
         @endfor
     </div>
-
-    <!-- Botón para volver al dashboard, dependiendo del rol del usuario -->
-        <!-- Redirigir dependiendo del rol del usuario -->
-    <div class="button-container">
-        @if(auth()->user()->role_id == \App\Models\Role::ADMIN)
-            <a href="{{ route('admin.dashboard') }}" class="back-button">Volver al Panel de Admin</a>
-        @else
-            <a href="{{ route('user.dashboard') }}" class="back-button">Volver a Mi Perfil</a>
-        @endif
-    </div>
+ 
+    
 
 
 </div>

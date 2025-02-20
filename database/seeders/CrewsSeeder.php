@@ -12,6 +12,6 @@ class Crews extends Seeder
      */
     public function run(): void
     {
-        //
+       
     }
 }

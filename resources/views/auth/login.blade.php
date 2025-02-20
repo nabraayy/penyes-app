@@ -59,7 +59,9 @@
         /* Estilos generales */
         body {
             font-family: 'Caveat', cursive;
-            background-color: #f4f4f9;
+            background-image: url('https://static.vecteezy.com/system/resources/previews/006/136/085/non_2x/set-of-bulls-linaer-illustration-stylized-silhouettes-of-bulls-standing-in-different-poses-isolated-over-balck-background-bull-logo-designs-set-symbol-of-2021-new-year-zodiac-sign-vector.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
             margin: 0;
             padding: 0;
             display: flex;

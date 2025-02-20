@@ -12,9 +12,8 @@
 
     <header class="header">
         <div class="logo">
-            <img src="log.jpg" alt="Logo">
+            <img src="{{asset('log.jpg')}}" alt="Logo">
         </div>
-        <h1>PENYAS APP</h1>
         <nav class="home">
             <ul class="nav-links">
                 @auth
@@ -51,7 +50,7 @@
         <section class="hero">
             <img src="https://i.pinimg.com/550x/2b/50/54/2b5054e746634ef536e983cda46db5fd.jpg" class="hero-image">
             <div class="hero-text">
-                <h1>Bienvenido a las penyas!</h1>
+                <h1>¡BIENVENIDO A LAS FIESTAS!</h1>
             </div>
         </section>
 
@@ -103,6 +102,18 @@
         </div>
             </div>
         </section>
+        
+        <section class="contact">
+            <div class="contact-r">
+            <h2>Contáctanos</h2>
+                <form action="" method="POST">
+                    <input type="text" name="nombre" placeholder="Tu Nombre" required>
+                    <input type="email" name="email" placeholder="Tu Email" required>
+                    <textarea name="mensaje" placeholder="Tu Mensaje" rows="4" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </section>
 
         <section class="location">
         <h2>Donde Encontrarnos</h2>
@@ -122,11 +133,12 @@
 <style>
 /* General styles */
 body {
-    font-family: 'Caveat', sans-serif;  /* Usando la fuente Roboto */
+    font-family: 'Caveat', sans-serif;  
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f4f4f9;  /* Fondo suave */
+    background-image: url('https://img.freepik.com/vector-premium/patron-costuras-ilustracion-toros-color-negro-estilo-arte-linea-sobre-fondo-blanco_460232-1948.jpg');  /* Fondo suave */
+    
 }
 /* menu */
 .menu-container{
@@ -135,43 +147,46 @@ body {
 }
 .menu-button{
     color:black;
-    padding:5px 5px;
+    padding:5px 20px;
     cursor: pointer;
-    border-radius: 6px; 
+    border-radius: 5px;
 }
 .menu{
     display:none;
     position:absolute;
-    background-color: #f4f4f4;
+    right: 25px;
+    background-color:rgb(0, 116, 15);
     min-width: 50px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     overflow: hidden;
 }
 .menu a {
-    color: black;
+    color: white;
     padding: 10px;
     text-decoration: none;
     display: block;
 }
 .menu a:hover {
-    background-color: #f1f1f1;
+    background-color:rgb(138, 2, 2);
 }
 /* Header styles */
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #f0f0f0;
+    background-color:rgb(134, 0, 0);
+    background-position: center;
     padding: 10px 20px;
     border-bottom: 1px solid #050505;
+
 }
 
 .header .logo img {
-    max-width: 100px; /* Ajustamos el tamaño máximo */
-    max-height: 100px; /* Ajustamos la altura máxima */
-    border-radius: 10%; /* Hacemos la imagen redonda */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregamos una sombra suave */
+    max-width: 100px; 
+    max-height: 100px; 
+    border-radius: 10%; 
+    box-shadow: 0 8px 12px rgba(4, 3, 3, 0.1); /* Agregamos una sombra suave */
     transition: transform 0.3s ease; /* Animación para el hover */
 }
 
@@ -181,13 +196,19 @@ body {
 
 /* Header title */
 .hero-text {
+    background: rgba(99, 96, 96, 0.6); 
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #fff;
     font-size: 35px;
     font-weight: 500;
     position: absolute;
-    bottom: -110px;
-    right:20px;
-    text-align: right;
-      /* Peso medio */
+    top: 70%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    text-align: center; 
+    width: 100%;
+    max-width: 500px; 
 }
 
 /* Navigation styles */
@@ -346,7 +367,63 @@ body {
 .program_button:hover {
     background-color: #0056b3;
 }
+/*contact */
+.contact {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    align-items:center; 
+    margin: auto;
+}
 
+.contact h2 {
+     margin-bottom: 15px;
+    color: #333;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+}
+    
+.contact textarea {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.contact textarea {
+    resize: none;
+}
+
+        .contact button {
+            background:rgb(15, 148, 1);
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .contact button:hover {
+            background:rgb(179, 0, 0);
+        }
+
+        @media (max-width: 500px) {
+            .contact {
+                max-width: 90%;
+                padding: 15px;
+            }
+        }
 /* About Us section */
 .about-us {
     padding: 20px;
@@ -355,7 +432,7 @@ body {
 }
 
 .about-content {
-    background-color: #f0f0f0;
+    background-color:rgb(239, 234, 234);
     padding: 20px;
     border-radius: 10px;
     width: 90%;
@@ -404,8 +481,9 @@ body {
 
 /* Footer */
 .footer {
-    background-color: #d3eaff;
+    background-color:rgb(136, 0, 0);
     text-align: center;
+    color:white;
     padding: 10px;
 }
 </style>

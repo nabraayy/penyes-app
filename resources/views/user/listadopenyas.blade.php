@@ -11,21 +11,22 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #f4f4f9;
+            background-image: url('https://img.freepik.com/vector-premium/patron-costuras-ilustracion-toros-color-negro-estilo-arte-linea-sobre-fondo-blanco_460232-1948.jpg');
         }
 
         .header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: #f0f0f0;
+            background-color:rgb(138, 0, 0);
             padding: 10px 20px;
+            color:white;
             border-bottom: 1px solid #050505;
         }
 
         .header .logo img {
-            max-width: 140px;
-            max-height: 140px;
+            max-width: 80px;
+            max-height: 80px;
             border-radius: 50%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
@@ -86,7 +87,7 @@
         }
 
         table th {
-            background-color: #007BFF;
+            background-color:rgb(123, 11, 11);
             color: white;
         }
 
@@ -96,7 +97,7 @@
 
         .back-button {
             padding: 10px 20px;
-            background-color: #007BFF;
+            background-color:rgb(0, 143, 57);
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -105,16 +106,48 @@
         }
 
         .back-button:hover {
-            background-color: #0056b3;
+            background-color:rgb(123, 11, 11);
+        }
+        .logout-button{
+            font-family: canveat;
+            border-radius:4px;
+            background-color:rgb(0, 103, 14);
+            color:white;
+            border: none;
+            text-align: center;
+            font-size: 18px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .logout-button span{
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+        .logout-button span:after{
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        .logout-button:hover span{
+            padding-right: 25px;
+        }
+        .logout-button:hover span:after{
+            opacity: 1;
+             right: 0;
         }
     </style>
 </head>
 <body>
 <header class="header">
         <div class="logo">
-            <img src="logo.jpg">
+         <img src="{{asset('log.jpg')}}"/>
         </div>
-    <h1>Listado de Peñas</h1>
     <nav class="home">
         <ul class="nav-links">
             @auth
@@ -122,7 +155,7 @@
                 <li class="nav-item">
                     <form action="{{ route('logout') }}" method="POST" class="logout-form">
                         @csrf
-                        <button type="submit" class="logout-button">Logout</button>
+                        <button type="submit" class="logout-button"><span>Logout</span></button>
                     </form>
                 </li>
             @endauth
@@ -146,7 +179,7 @@
                 <tr>
                     <td><strong>{{ $penya->name }}</strong></td>
                     <td>{{ $penya->description}}</td>
-                    <td>{{ $penya->members_count }}</td>
+                    <td>{{ $penya->members }}</td>
                 </tr>
                 @endforeach
             </tbody>

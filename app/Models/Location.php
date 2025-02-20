@@ -10,7 +10,7 @@ class Location extends Model
     use HasFactory;
 
     // Especificamos la tabla y las columnas que se pueden asignar de forma masiva
-    protected $fillable = ['x', 'y', 'penya_id'];
+    protected $fillable = ['x', 'y', 'penya_id','year'];
 
     // Relación con el modelo Penya
     public function penya()

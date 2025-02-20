@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #f4f4f9;
+            background-image: url('https://img.freepik.com/vector-premium/patron-costuras-ilustracion-toros-color-negro-estilo-arte-linea-sobre-fondo-blanco_460232-1948.jpg');
         }
 
         .header {
@@ -69,7 +69,7 @@
             max-width: 1000px;
             margin: 20px auto;
             background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 24px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
 
@@ -82,7 +82,7 @@
         .admin-table {
             width: 100%;
             border-collapse: collapse;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 6px rgba(0, 0, 0, 0.1);
         }
 
         .admin-table th, .admin-table td {
@@ -107,7 +107,7 @@
         .action-button {
             text-decoration: none;
             color: white;
-            background-color: #007bff;
+            background-color:rgb(6, 6, 6);
             padding: 6px 12px;
             border-radius: 5px;
             font-size: 14px;
@@ -116,11 +116,12 @@
         }
 
         .action-button:hover {
-            background-color: #0056b3;
+            background-color:rgb(20, 20, 20);
         }
 
         .delete-button {
             background-color: #d9534f;
+            border-radius:5px;
         }
 
         .delete-button:hover {
@@ -129,6 +130,8 @@
 
         .edit-button {
             background-color: #28a745;
+            color:black;
+            border-radius:5px;
         }
 
         .edit-button:hover {

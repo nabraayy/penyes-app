@@ -11,24 +11,27 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #f4f4f9;
+            background-image: url('https://img.freepik.com/vector-premium/patron-costuras-ilustracion-toros-color-negro-estilo-arte-linea-sobre-fondo-blanco_460232-1948.jpg');  
         }
 
         .header {
             display: flex;
+            color:white;
             align-items: center;
             justify-content: space-between;
-            background-color: #f0f0f0;
+            background-color:rgb(113, 0, 0);
+            background-size: contain; 
             padding: 10px 20px;
             border-bottom: 1px solid #050505;
+        
         }
 
         .header .logo img {
-            max-width: 140px;
-            max-height: 140px;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            max-width: 100px; 
+            max-height: 100px; 
+            border-radius: 10%; 
+            box-shadow: 0 8px 12px rgba(4, 3, 3, 0.1); /* Agregamos una sombra suave */
+            transition: transform 0.3s ease; 
         }
 
         .header .logo img:hover {
@@ -66,7 +69,12 @@
 
         .main-content {
             padding: 20px;
+            text-align:center;
+            
         }
+        
+            
+       
 
         .logout-button {
             background-color: #d9534f;
@@ -87,7 +95,7 @@
             max-width: 1000px;
             margin: 20px auto;
             border-collapse: collapse;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
         }
 
         .admin-table th, .admin-table td {
@@ -97,22 +105,24 @@
         }
 
         .admin-table th {
-            background-color: #f0f0f0;
+            background-color:rgb(113, 0, 0);
             font-weight: bold;
+            color:white;
         }
 
         .admin-table td {
-            background-color: #ffffff;
+            background-color:rgb(4, 4, 4);
+            color:white;
         }
 
         .admin-table tr:hover td {
-            background-color: #f9f9f9;
+            background-color:rgb(102, 102, 102);
         }
 
         .action-button {
             text-decoration: none;
             color: white;
-            background-color: #007bff;
+            background-color:rgb(1, 122, 29);
             padding: 6px 12px;
             border-radius: 5px;
             font-size: 14px;
@@ -121,11 +131,11 @@
         }
 
         .action-button:hover {
-            background-color: #0056b3;
+            background-color:rgb(156, 8, 8);
         }
 
         .delete-button {
-            background-color: #d9534f;
+            background-color:rgb(135, 1, 1);
         }
 
         .delete-button:hover {
@@ -148,15 +158,12 @@
             background-color: #e0a800;
         }
     </style>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.2/js/bootstrap.min.js"></script> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.2/css/bootstrap.min.css"/> -->
 </head>
 <body>
 <header class="header">
     <div class="logo">
-        <img src="logo.jpg" alt="Logo">
+        <img src="{{asset('log.jpg')}}" alt="Logo">
     </div>
-    <h1>ADMIN CONTROL</h1>
     <nav class="home">
         <ul class="nav-links">
             @auth
@@ -174,6 +181,7 @@
 </header>
 
 <main class="main-content">
+<h1>ADMIN CONTROL</h1>
     <table class="admin-table">
         <thead>
             <tr>

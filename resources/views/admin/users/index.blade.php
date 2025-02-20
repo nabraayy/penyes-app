@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #f4f4f9;
+            background-image: url('https://img.freepik.com/vector-premium/patron-costuras-ilustracion-toros-color-negro-estilo-arte-linea-sobre-fondo-blanco_460232-1948.jpg');
         }
 
         .container {
@@ -91,21 +91,21 @@
         }
 
         .add-button {
-            background-color: #ffc107;
-            color: black;
+            background-color:rgb(138, 0, 0);
+            color: white;
         }
 
         .add-button:hover {
-            background-color: #e0a800;
+            background-color:rgb(0, 134, 2);
         }
 
         .back-button {
-            background-color: #007bff;
+            background-color:rgb(0, 134, 2);
             color: white;
         }
 
         .back-button:hover {
-            background-color: #0056b3;
+            background-color:rgb(138, 0, 0);
         }
 
         .modal {
@@ -157,6 +157,39 @@
 
         .cancel-button:hover {
             background-color: #545b62;
+        }
+        .logout-button{
+            font-family: canveat;
+            border-radius:4px;
+            background-color:rgb(0, 103, 14);
+            color:white;
+            border: none;
+            text-align: center;
+            font-size: 18px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .logout-button span{
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+        .logout-button span:after{
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        .logout-button:hover span{
+            padding-right: 25px;
+        }
+        .logout-button:hover span:after{
+            opacity: 1;
+             right: 0;
         }
     </style>
     <script>

@@ -110,7 +110,7 @@
 <body>
 <header class="header">
     <div class="logo">
-        <img src="logo.jpg" alt="Logo">
+        <img src="{{asset('log.jpg')}}" alt="Logo">
     </div>
     <h1>Solicitar Unión a Peña</h1>
     <nav class="home">
