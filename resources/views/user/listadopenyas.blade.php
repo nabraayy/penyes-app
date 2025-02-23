@@ -16,20 +16,21 @@
 
         .header {
             display: flex;
+            color:white;
             align-items: center;
             justify-content: space-between;
-            background-color:rgb(138, 0, 0);
+            background-color:rgb(113, 0, 0);
+            background-size: contain; 
             padding: 10px 20px;
-            color:white;
             border-bottom: 1px solid #050505;
         }
 
         .header .logo img {
-            max-width: 80px;
-            max-height: 80px;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            max-width: 100px; 
+            max-height: 100px; 
+            border-radius: 10%; 
+            box-shadow: 0 8px 12px rgba(4, 3, 3, 0.1); /* Agregamos una sombra suave */
+            transition: transform 0.3s ease; 
         }
 
         .header .logo img:hover {

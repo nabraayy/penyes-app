@@ -144,12 +144,14 @@ body {
 .menu-container{
     position: relative
     display:inline-block;
+    
 }
 .menu-button{
     color:black;
     padding:5px 20px;
     cursor: pointer;
     border-radius: 5px;
+    background: #ffffff
 }
 .menu{
     display:none;
@@ -168,7 +170,7 @@ body {
     display: block;
 }
 .menu a:hover {
-    background-color:rgb(138, 2, 2);
+    background-color:rgb(0, 176, 47);
 }
 /* Header styles */
 .header {
@@ -196,8 +198,8 @@ body {
 
 /* Header title */
 .hero-text {
-    background: rgba(99, 96, 96, 0.6); 
-    padding: 20px;
+    background: rgba(0, 0, 0, 0.48); 
+    padding: 10px;
     border-radius: 10px;
     border: 2px solid #fff;
     font-size: 35px;
@@ -209,6 +211,8 @@ body {
     text-align: center; 
     width: 100%;
     max-width: 500px; 
+    color:rgb(255, 255, 255);
+    
 }
 
 /* Navigation styles */
@@ -276,6 +280,7 @@ body {
 .photos-section {
     text-align: center;
     padding: 40px;
+    
 }
 
 .carousel {

@@ -11,24 +11,26 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #f4f4f9;
+            background-image: url('https://img.freepik.com/vector-premium/patron-costuras-ilustracion-toros-color-negro-estilo-arte-linea-sobre-fondo-blanco_460232-1948.jpg');
         }
 
         .header {
             display: flex;
+            color:white;
             align-items: center;
             justify-content: space-between;
-            background-color: #f0f0f0;
+            background-color:rgb(113, 0, 0);
+            background-size: contain; 
             padding: 10px 20px;
             border-bottom: 1px solid #050505;
         }
 
         .header .logo img {
-            max-width: 140px;
-            max-height: 140px;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            max-width: 100px; 
+            max-height: 100px; 
+            border-radius: 10%; 
+            box-shadow: 0 8px 12px rgba(4, 3, 3, 0.1); /* Agregamos una sombra suave */
+            transition: transform 0.3s ease; 
         }
 
         .header .logo img:hover {
@@ -65,13 +67,16 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            
         }
 
         label {
             font-weight: bold;
+            
         }
 
         input, select, textarea, button {
+            font-family: 'Caveat', cursive;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ddd;
@@ -79,7 +84,7 @@
         }
 
         button {
-            background-color: #007BFF;
+            background-color: #780000;
             color: white;
             border: none;
             font-weight: bold;
@@ -88,13 +93,13 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #0e7a00;
         }
 
         .back-button {
             margin-top: 10px;
             padding: 10px 20px;
-            background-color: #007BFF;
+            background-color: #017001;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -103,7 +108,40 @@
         }
 
         .back-button:hover {
-            background-color: #0056b3;
+            background-color: #008c1c;
+        }
+         .logout-button{
+            font-family: 'Caveat', cursive;
+            border-radius:4px;
+            background-color:rgb(0, 103, 14);
+            color:white;
+            border: none;
+            text-align: center;
+            font-size: 18px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .logout-button span{
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+        .logout-button span:after{
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        .logout-button:hover span{
+            padding-right: 25px;
+        }
+        .logout-button:hover span:after{
+            opacity: 1;
+             right: 0;
         }
     </style>
 </head>
@@ -112,7 +150,6 @@
     <div class="logo">
         <img src="{{asset('log.jpg')}}" alt="Logo">
     </div>
-    <h1>Solicitar Unión a Peña</h1>
     <nav class="home">
         <ul class="nav-links">
             @auth

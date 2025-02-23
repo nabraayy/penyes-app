@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #f4f4f9;
+            background-image: url('https://img.freepik.com/vector-premium/patron-costuras-ilustracion-toros-color-negro-estilo-arte-linea-sobre-fondo-blanco_460232-1948.jpg');
         }
 
         /* Header styles */
@@ -218,6 +218,7 @@
         <a href="{{ route('user.listado') }}">Listado de Peñas</a>
         <a href="{{ route('user.request') }}">Solicitar Unión a Peña</a>
         <a href="{{ route('admin.lottery') }}">Ver Sorteo</a>
+        <a href="{{ route('user.profile') }}">Perfil</a>
         <!-- Display the request status here -->
         @if(auth()->user()->requests->isNotEmpty())
             @foreach(auth()->user()->requests as $request)

@@ -78,6 +78,7 @@
 
         .logout-button {
             background-color: #d9534f;
+            font-family: 'Caveat', cursive;
             color: white;
             border: none;
             padding: 5px 10px;

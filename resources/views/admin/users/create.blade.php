@@ -50,7 +50,7 @@
         .submit-button {
             width: 100%;
             padding: 10px;
-            background-color: #007bff;
+            background-color: #006e0f;
             color: white;
             border: none;
             border-radius: 5px;
@@ -61,7 +61,7 @@
         }
 
         .submit-button:hover {
-            background-color: #0056b3;
+            background-color: #740000;
         }
 
         .back-link {
@@ -69,12 +69,12 @@
             text-align: center;
             margin-top: 15px;
             text-decoration: none;
-            color: #007bff;
+            color: #6c0000;
             font-weight: bold;
         }
 
         .back-link:hover {
-            color: #0056b3;
+            color: #d22b2b;
         }
     </style>
 </head>

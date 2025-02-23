@@ -71,6 +71,7 @@ Route::get('/user', function(){
 Route::get('user/listadopenyas',[PenyaController::class, 'listado'])->name('user.listado');
 Route::get('user/request', [RequestController::class, 'create'])->name('user.request');
 Route::post('user/request', [RequestController::class, 'request']);
+Route::get('user/profile',[ProfileController::class, 'edit'])->name('user.profile');
 // Usuario solicita unirse a una peña
 
     Route::get('user/request', [RequestController::class, 'create'])->name('user.request');

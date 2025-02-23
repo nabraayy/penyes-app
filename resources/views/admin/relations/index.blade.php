@@ -13,33 +13,6 @@
             box-sizing: border-box;
             background-image: url('https://img.freepik.com/vector-premium/patron-costuras-ilustracion-toros-color-negro-estilo-arte-linea-sobre-fondo-blanco_460232-1948.jpg');
         }
-
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #f0f0f0;
-            padding: 10px 20px;
-            border-bottom: 1px solid #050505;
-        }
-
-        .header .logo img {
-            max-width: 140px;
-            max-height: 140px;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .header .logo img:hover {
-            transform: scale(1.1);
-        }
-
-        .header h1 {
-            font-size: 24px;
-            font-weight: 500;
-        }
-
         .nav-links {
             list-style: none;
             margin: 0;
@@ -92,8 +65,9 @@
         }
 
         .admin-table th {
-            background-color: #f0f0f0;
+            background-color: #6f0000;
             font-weight: bold;
+            color:white;
         }
 
         .admin-table td {
@@ -107,7 +81,7 @@
         .action-button {
             text-decoration: none;
             color: white;
-            background-color: #007bff;
+            background-color: #720000;
             padding: 6px 12px;
             border-radius: 5px;
             font-size: 14px;
@@ -120,7 +94,11 @@
         }
 
         .delete-button {
-            background-color: #d9534f;
+            background-color: #820000;
+            color:white;
+            border-radius:5px;
+            padding: 6px 12px;
+            font-family: 'Caveat', sans-serif;
         }
 
         .delete-button:hover {
@@ -128,7 +106,11 @@
         }
 
         .edit-button {
-            background-color: #28a745;
+            background-color: #006b19;
+            color:white;
+            border-radius:5px;
+            font-family: 'Caveat', sans-serif;
+            padding: 6px 12px;
         }
 
         .edit-button:hover {
@@ -136,7 +118,7 @@
         }
 
         .back-button {
-            background-color: #6c757d;
+            background-color: #760000;
             color: white;
             padding: 12px 30px;
             border-radius: 50px;
@@ -150,31 +132,14 @@
         }
 
         .back-button:hover {
-            background-color: #5a6268;
+            background-color: #005512;
             transform: scale(1.05);
         }
+        
     </style>
 </head>
 <body>
-<header class="header">
-    <div class="logo">
-        <img src="logo.jpg" alt="Logo">
-    </div>
-    <h1>ADMIN CONTROL</h1>
-    <nav class="home">
-        <ul class="nav-links">
-            @auth
-            <li class="nav-item user-name">{{ Auth::user()->name }}</li>
-            <li class="nav-item">
-                <form action="{{ route('logout') }}" method="POST" class="logout-form">
-                    @csrf
-                    <button type="submit" class="logout-button">Logout</button>
-                </form>
-            </li>
-            @endauth
-        </ul>
-    </nav>
-</header>
+
 
 <main class="main-content">
     <h2>Relaciones entre Usuarios y Peñas</h2>
@@ -197,7 +162,7 @@
                         <form action="{{ route('admin.relations.delete', ['id' => $relation->id]) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-md btn-danger" type="submit" class="delete-button">Eliminar</button>
+                            <button  type="submit" class="delete-button">Eliminar</button>
                         </form>
                     </td>
                 </tr>

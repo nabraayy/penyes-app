@@ -28,13 +28,18 @@ class LotteryController extends Controller
         }
         $rangeYears = range($currentYear-4, $currentYear);
         rsort($rangeYears);
-        
+        $places = [];
+        foreach ($locations as $location) {
+            $index = ($location->y * 9) + $location->x; 
+            $places[$index] = $location->penya; 
+        }
         return view('admin.lottery', [
             'penyas'=>$penyas,
             'locations' => $locations,
             'year' => $year ?? now()->year,
             'showDrawButton' => $showDrawButton,
-            'rangeYears' => $rangeYears
+            'rangeYears' => $rangeYears,
+            'places'=>$places
         ]);
     }
 
@@ -46,7 +51,7 @@ class LotteryController extends Controller
     {
         
         
-        $year = $request->year ?? now()->year;
+        $year = filter_var($request->year, FILTER_VALIDATE_INT) ?? now()->year;
         $penyas = Penya::all()->pluck('name', 'id');
         $locations = Location::where('year', $year)->get();
         

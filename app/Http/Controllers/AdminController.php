@@ -92,6 +92,7 @@ class AdminController extends Controller
         return redirect()->route('admin.users')->with('success', 'Usuario eliminado correctamente');
     }
 
+    
     // Mostrar todas las peñas
     public function managePenyas()
     {
@@ -147,18 +148,14 @@ class AdminController extends Controller
     public function editRelation($id)
     {
         
-        // Buscar la relación específica
-        $relation = Relation::findOrFail($id);
-
-        // Obtener todas las peñas para que el admin pueda cambiar la peña si lo desea
+        $relation = Relation::with('user')->find($id);
         $penyas = Penya::all();
+        return view('admin.relations.edit', compact('relation', 'penyas'));             
 
-        // Retornar la vista con la relación y las peñas
-        return view('admin.relations.edit', compact('relation', 'penyas'));
     }
 
 
-    public function updateRelation(Request $request, $id)
+    public function updateRelation(HttpRequest $request, $id)
     {
         // Validar la entrada (si es necesario)
         $request->validate([
@@ -174,7 +171,7 @@ class AdminController extends Controller
         ]);
 
         // Redirigir de nuevo con un mensaje de éxito
-        return redirect()->route('admin.relations')->with('success', 'Relación actualizada con éxito.');
+        return redirect()->route('admin.relations.index')->with('success', 'Relación actualizada con éxito.');
     }
 
 

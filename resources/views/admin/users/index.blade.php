@@ -72,8 +72,9 @@
         }
 
         .delete-button {
-            background-color: #d9534f;
+            background-color: #740000;
             color: white;
+            font-family: 'Caveat', sans-serif;
         }
 
         .delete-button:hover {
