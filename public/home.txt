@@ -12,7 +12,7 @@
 
     <header class="header">
         <div class="logo">
-            <img src="{{asset('img/log.jpg')}}" alt="Logo">
+            <img src="{{asset('log.jpg')}}" alt="Logo">
         </div>
         <nav class="home">
             <ul class="nav-links">
@@ -22,7 +22,7 @@
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST" class="logout-form">
                             @csrf
-                            <button type="submit" class="logout-button"><span>Logout</span></button>
+                            <button type="submit" class="logout-button">Logout</button>
                         </form>
                     </li>
                 @else
@@ -32,11 +32,10 @@
                         <div class="menu" id="menu">
                         <li class="nav-item"><a href="/register" class="nav-link">Register</a></li>
                         <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
-                            <a href="#photos">Fotos</a>
-                            <a href="#program">Programa</a>
-                            <a href="#aboutUs">Sobre Nosotros</a>
-                            <a href="#contact">Contacto</a>
-                            <a href="#location">Ubicación</a>
+                            <a href="#">Fotos</a>
+                            <a href="#">Programa</a>
+                            <a href="#">Sobre Nosotros</a>
+                            <a href="#">Ubicación</a>
 
                         </div>
                     </div>
@@ -46,33 +45,17 @@
         </nav>
        
     </header>
-    <div class="navbar">
-        @auth
-            <a href="{{ route('dashboard') }}">Home</a>
-            <a href="{{ route('user.listado') }}">Listado de Peñas</a>
-            <a href="{{ route('user.request') }}">Solicitar Unión a Peña</a>
-            <a href="{{ route('admin.lottery') }}">Ver Sorteo</a>
-            <a href="{{ route('user.profile') }}">Perfil</a>
-            <?php $request=auth()->user()->requests->last(); ?>
-            @if(!is_null($request))
-                <div class="request-status 
-                    {{ $request->status == 'pending' ? 'pending' : '' }}
-                    {{ $request->status == 'accepted' ? 'accepted' : '' }}
-                    {{ $request->status == 'rejected' ? 'rejected' : '' }}">
-                    Solicitud {{ $request->status == 'pending' ? 'Pendiente' : ($request->status == 'accepted' ? 'Aceptada' : 'Rechazada') }}
-                </div>
-            @else
-                <div class="request-status">No tienes solicitudes pendientes</div>
-            @endif
-        @endauth
-    </div>
-    
+
     <main>
         <section class="hero">
-            <img src="{{asset('img/toro.jpg')}}" class="hero-image">
-            
+            <img src="https://i.pinimg.com/550x/2b/50/54/2b5054e746634ef536e983cda46db5fd.jpg" class="hero-image">
+            <div class="hero-text">
+                <h1>¡BIENVENIDO A LAS FIESTAS!</h1>
+            </div>
         </section>
-        <section id="photos" class="photos-section">
+
+
+        <section class="photos-section">
             <h2>Fotos tradicionales</h2>
             <div class="carousel">
                 <button class="carousel-btn left">&lt;</button> 
@@ -93,7 +76,7 @@
             </div>
         </section>
 
-        <section id="program" class="program">
+        <section class="program">
             <h2>Programa de fiestas</h2>
             <div class="program_pdf">
                 <iframe
@@ -105,7 +88,7 @@
             </div>
         </section>
         
-        <section id="aboutUs" class="about-us">
+        <section class="about-us">
             <h2>Sobre nosotros</h2>
             <div class="about-content">
                 <p>Somos un grupo de peñas del pueblo, unidos por la pasión de mantener vivas nuestras tradiciones. En cada fiesta, nos encargamos de organizar actividades que fomentan la alegría, la unión y el orgullo de nuestra cultura.
@@ -120,11 +103,10 @@
             </div>
         </section>
         
-        <section id="contact" class="contact">
+        <section class="contact">
             <div class="contact-r">
-                <h2>Contáctanos</h2>
-                <form action="{{ route('contact.send') }}" method="POST">
-                    @csrf
+            <h2>Contáctanos</h2>
+                <form action="" method="POST">
                     <input type="text" name="nombre" placeholder="Tu Nombre" required>
                     <input type="email" name="email" placeholder="Tu Email" required>
                     <textarea name="mensaje" placeholder="Tu Mensaje" rows="4" required></textarea>
@@ -132,9 +114,8 @@
                 </form>
             </div>
         </section>
-        
 
-        <section id="location" class="location">
+        <section class="location">
         <h2>Donde Encontrarnos</h2>
         <div class="map-container">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.9881997197826!2d-0.16296322348409323!3d39.852097489810674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd600f9b68a12811%3A0x9276403b60cb4465!2sC.%20San%20Joaquin%2C%2012520%20Nules%2C%20Castell%C3%B3n!5e0!3m2!1ses!2ses!4v1733766858957!5m2!1ses!2ses"
@@ -149,59 +130,19 @@
 </body>
 </html>
 
-    <style>
+<style>
 /* General styles */
-
-
 body {
-    font-family: 'Caveat'; 
+    font-family: 'Caveat', sans-serif;  
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background-image: url('https://img.freepik.com/vector-premium/patron-costuras-ilustracion-toros-color-negro-estilo-arte-linea-sobre-fondo-blanco_460232-1948.jpg');  /* Fondo suave */
     
 }
-.navbar {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            background-color: rgb(5, 90, 0);
-            padding: 10px;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 8px 16px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .navbar a:hover {
-            background-color: rgb(0, 114, 0);
-        }
-
-        .navbar .request-status {
-            color: white;
-            font-weight: bold;
-            padding: 8px 16px;
-            border-radius: 5px;
-        }
-        .request-status.pending {
-            background-color: orange;
-        }
-
-        .request-status.accepted {
-            background-color: green;
-        }
-
-        .request-status.rejected {
-            background-color: red;
-        }
 /* menu */
 .menu-container{
-    position: relative;
+    position: relative
     display:inline-block;
     
 }
@@ -210,21 +151,21 @@ body {
     padding:5px 20px;
     cursor: pointer;
     border-radius: 5px;
-    background: #ffffff;
+    background: #ffffff
 }
 .menu{
     display:none;
     position:absolute;
-    right: 30px;
-    background-color:rgb(93, 93, 93);
-    min-width: 80px;
+    right: 25px;
+    background-color:rgb(0, 116, 15);
+    min-width: 50px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     overflow: hidden;
 }
 .menu a {
     color: white;
-    padding: 20px;
+    padding: 10px;
     text-decoration: none;
     display: block;
 }
@@ -304,6 +245,25 @@ body {
     font-weight: 600;
     color: #333;
 }
+
+.logout-button {
+    background-color: #DCDCDC;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.logout-button:hover {
+    background-color: #c82333;
+}
+
+.logout-form {
+    display: inline;
+}
+
 /* Hero section */
 .hero {
     text-align: center;
@@ -359,92 +319,61 @@ body {
 
 /* Program section */
 .program {
-        text-align: center;
-        position: relative;
-        padding: 20px;
-    }
+    text-align: center;
+    position: relative;
+    padding: 20px;
+}
 
-    .program_pdf {
-        position: relative;
-        display: inline-block;
-        width: 80%;
-        max-width: 800px;
-        height: 400px;
-        overflow: hidden;
-        transition: all 0.3s ease-in-out;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        background: #f9f9f9;
-        perspective: 1500px; /* Adding perspective for 3D effect */
-    }
+.program_pdf {
+    position: relative;
+    display: inline-block;
+    width: 80%;
+    max-width: 800px;
+    height: 400px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+}
 
-    /* To simulate a "book open" effect */
-    .program_pdf.expanded {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        width: 90%;
-        height: 90vh;
-        transform: translate(-50%, -50%) rotateY(10deg);
-        z-index: 9999;
-        background: #fff;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        transition: all 0.5s ease-in-out;
-    }
+.program_pdf.expanded {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 90vh;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
-    /* Styling for the iframe to make it fit well */
-    .pdf-frame {
-        width: 100%;
-        height: 100%;
-        border: none;
-        transform: scale(1); /* Prevents scaling issues */
-    }
+.pdf-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 
-    /* For mobile responsiveness */
-    @media (max-width: 768px) {
-        .pdf-frame {
-            height: 300px;
-        }
-    }
+.program_button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
 
-    .program_button {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 15px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: background-color 0.2s;
-        z-index: 1; /* Ensure button is on top of iframe */
-    }
-
-    .program_button:hover {
-        background-color: #0056b3;
-    }
-
-    /* Animation for the book flip effect */
-    .program_pdf.expanded .pdf-frame {
-        animation: flipBook 1s ease-in-out forwards;
-    }
-
-    @keyframes flipBook {
-        0% {
-            transform: rotateY(0deg);
-        }
-        50% {
-            transform: rotateY(180deg);
-        }
-        100% {
-            transform: rotateY(360deg);
-        }
-    }
+.program_button:hover {
+    background-color: #0056b3;
+}
 /*contact */
 .contact {
-    font-family: 'Caveat', sans-serif;  
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -455,17 +384,13 @@ body {
     align-items:center; 
     margin: auto;
 }
-input{
-    font-family: 'Caveat', sans-serif;  
-}
+
 .contact h2 {
-    font-family: 'Caveat', sans-serif;  
      margin-bottom: 15px;
     color: #333;
 }
 
 .contact form {
-    font-family: 'Caveat', sans-serif;  
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -473,7 +398,6 @@ input{
 }
     
 .contact textarea {
-    font-family: 'Caveat', sans-serif;  
     width: 90%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -481,12 +405,10 @@ input{
     font-size: 16px;
 }
 .contact textarea {
-    font-family: 'Caveat', sans-serif;  
     resize: none;
 }
 
         .contact button {
-            font-family: 'Caveat', sans-serif;  
             background:rgb(15, 148, 1);
             color: white;
             border: none;
@@ -551,11 +473,6 @@ input{
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 768px) {
-    .map-container iframe {
-        height: 250px;
-    }
-}
 
 
 #map {
@@ -574,39 +491,6 @@ input{
     color:white;
     padding: 10px;
 }
-.logout-button{
-            font-family: canveat;
-            border-radius:4px;
-            background-color:rgb(0, 103, 14);
-            color:white;
-            border: none;
-            text-align: center;
-            font-size: 18px;
-            transition: all 0.5s;
-            cursor: pointer;
-            margin: 10px;
-        }
-        .logout-button span{
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 0.5s;
-        }
-        .logout-button span:after{
-            content: '\00bb';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
-        .logout-button:hover span{
-            padding-right: 25px;
-        }
-        .logout-button:hover span:after{
-            opacity: 1;
-             right: 0;
-        }
 </style>
 
 <script>
@@ -687,8 +571,8 @@ function initMap() {
     //funcion menu
     function toggleMenu(){
         var menu =document.getElementById("menu");
-        menu.style.display= menu.style.display === "block" ? "none" :"block";
+        menu.style.display=(menu.style.display === "block") ? "none" :"block";
     }
-    
+   
     
 </script>

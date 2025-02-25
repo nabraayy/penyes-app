@@ -11,16 +11,17 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #f4f4f4;
+            background-image: url('https://img.freepik.com/vector-premium/patron-costuras-ilustracion-toros-color-negro-estilo-arte-linea-sobre-fondo-blanco_460232-1948.jpg');
         }
         .profile-container {
             width: 50%;
             margin: 50px auto;
-            background: white;
+            background: rgb(8, 8, 8);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
+            color:white;
         }
         .profile-img {
             width: 150px;
@@ -54,6 +55,7 @@
     </style>
 </head>
 <body>
+    
     <div class="profile-container">
         <img src="{{ Auth::user()->profile_image ?? 'https://via.placeholder.com/150' }}" alt="Foto de perfil" class="profile-img">
         <h2 class="profile-name">{{ Auth::user()->name }}</h2>
@@ -62,6 +64,10 @@
         <a href="{{ route('user.profile') }}">
             <button class="edit-btn">Editar Perfil</button>
         </a>
+        <a href="{{ route('user.dashboard') }}">
+            <button class="edit-btn">Salir Perfil</button>
+        </a>
     </div>
 </body>
 </html>
+

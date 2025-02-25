@@ -41,6 +41,44 @@
             font-size: 24px;
             font-weight: 500;
         }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            background-color: rgb(5, 90, 0);
+            padding: 10px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: rgb(0, 114, 0);
+        }
+
+        .navbar .request-status {
+            color: white;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        .request-status.pending {
+            background-color: orange;
+        }
+
+        .request-status.accepted {
+            background-color: green;
+        }
+
+        .request-status.rejected {
+            background-color: red;
+        }
 
         .nav-links {
             list-style: none;
@@ -110,8 +148,8 @@
         .back-button:hover {
             background-color: #008c1c;
         }
-         .logout-button{
-            font-family: 'Caveat', cursive;
+        .logout-button{
+            font-family: canveat;
             border-radius:4px;
             background-color:rgb(0, 103, 14);
             color:white;
@@ -148,7 +186,7 @@
 <body>
 <header class="header">
     <div class="logo">
-        <img src="{{asset('log.jpg')}}" alt="Logo">
+        <img src="{{asset('img/log.jpg')}}" alt="Logo">
     </div>
     <nav class="home">
         <ul class="nav-links">
@@ -157,14 +195,33 @@
                 <li class="nav-item">
                     <form action="{{ route('logout') }}" method="POST" class="logout-form">
                         @csrf
-                        <button type="submit" class="logout-button">Logout</button>
+                        <button type="submit" class="logout-button"><span>Logout</span></button>
                     </form>
                 </li>
             @endauth
         </ul>
     </nav>
 </header>
-
+<div class="navbar">
+    @auth
+        <a href="{{ route('dashboard') }}">Home</a>
+        <a href="{{ route('user.listado') }}">Listado de Peñas</a>
+        <a href="{{ route('user.request') }}">Solicitar Unión a Peña</a>
+        <a href="{{ route('admin.lottery') }}">Ver Sorteo</a>
+        <a href="{{ route('user.profile') }}">Perfil</a>
+        <?php $request=auth()->user()->requests->last(); ?>
+        @if(!is_null($request))
+            <div class="request-status 
+                {{ $request->status == 'pending' ? 'pending' : '' }}
+                {{ $request->status == 'accepted' ? 'accepted' : '' }}
+                {{ $request->status == 'rejected' ? 'rejected' : '' }}">
+                Solicitud {{ $request->status == 'pending' ? 'Pendiente' : ($request->status == 'accepted' ? 'Aceptada' : 'Rechazada') }}
+            </div>
+        @else
+            <div class="request-status">No tienes solicitudes pendientes</div>
+        @endif
+    @endauth
+</div>
 <div class="content">
     <h2>Formulario de Solicitud</h2>
     <div class="form-container">
@@ -184,7 +241,7 @@
 
             <label for="description">Mensaje</label>
             <textarea id="description" name="description" rows="4" placeholder="Escribe un mensaje para los administradores..."></textarea>
-
+           
             <button type="submit">Enviar Solicitud</button>
         </form>
     </div>

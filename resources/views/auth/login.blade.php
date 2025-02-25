@@ -45,9 +45,9 @@
                     </a>
                 @endif
 
-                <x-primary-button class="login-button">
+                <button  class="login-button">
                     {{ __('Log in') }}
-                </x-primary-button>
+                </button>
             </div>
         </form>
     </div>
@@ -58,7 +58,7 @@
 
         /* Estilos generales */
         body {
-            font-family: 'Caveat', cursive;
+            font-family: 'Caveat';
             background-image: url('https://static.vecteezy.com/system/resources/previews/006/136/085/non_2x/set-of-bulls-linaer-illustration-stylized-silhouettes-of-bulls-standing-in-different-poses-isolated-over-balck-background-bull-logo-designs-set-symbol-of-2021-new-year-zodiac-sign-vector.jpg');
             background-size: cover;
             background-repeat: no-repeat;
@@ -73,6 +73,7 @@
         /* Contenedor principal del login */
         .login-container {
             background-color: white;
+            font-family: 'Caveat';
             border-radius: 8px;
             padding: 30px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -119,7 +120,7 @@
         }
 
         .input-field:focus {
-            border-color: #007BFF;
+            border-color: #6f0000;
             outline: none;
         }
 
@@ -132,7 +133,7 @@
         .login-button {
             width: 100%;
             padding: 12px;
-            background-color: #007BFF;
+            background-color: #5a0202;
             color: white;
             font-size: 16px;
             border: none;
@@ -142,14 +143,14 @@
         }
 
         .login-button:hover {
-            background-color: #0056b3;
+            background-color: #c20606;
         }
 
         /* Estilo de opciones adicionales */
         .forgot-password {
             display: block;
             font-size: 14px;
-            color: #007BFF;
+            color: #0f5e03;
             margin-top: 10px;
             text-decoration: none;
         }

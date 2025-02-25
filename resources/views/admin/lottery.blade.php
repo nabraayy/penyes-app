@@ -1,11 +1,7 @@
 
-@push('name')
-@viteReactRefresh
-@vite('public/js/app.jsx')
-@endpush 
 
 
-    <div id="app"></div>
+    
 
     
 
@@ -16,8 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sorteo del Carafal</title>
         <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+       
+ 
+
         
-        <style>
+<style>
             body {
                 font-family: 'Caveat', sans-serif;
                 margin: 0;
@@ -63,7 +62,7 @@
                 max-width: 100px; 
                 max-height: 100px; 
                 border-radius: 10%; 
-                box-shadow: 0 8px 12px rgba(4, 3, 3, 0.1); /* Agregamos una sombra suave */
+                box-shadow: 0 8px 12px rgba(4, 3, 3, 0.1); 
                 transition: transform 0.3s ease; 
             }
     
@@ -71,7 +70,44 @@
                 font-size: 24px;
                 font-weight: 500;
             }
-    
+            .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            background-color: rgb(5, 90, 0);
+            padding: 10px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: rgb(0, 114, 0);
+        }
+
+        .navbar .request-status {
+            color: white;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        .request-status.pending {
+            background-color: orange;
+        }
+
+        .request-status.accepted {
+            background-color: green;
+        }
+
+        .request-status.rejected {
+            background-color: red;
+        }
             .content {
                 margin: 20px;
                 padding: 20px;
@@ -200,11 +236,11 @@
                 opacity: 1;
                  right: 0;
             }
-            /* Estilos para el botón "Realizar Sorteo" */
+            
     .btn-primary {
-        font-family: 'Caveat', cursive; /* Usar la misma fuente que el resto */
+        font-family: 'Caveat', cursive; 
         padding: 10px 20px;
-        background-color: rgb(1, 114, 6); /* Color de fondo similar al de los otros botones */
+        background-color: rgb(1, 114, 6); 
         color: white;
         text-decoration: none;
         border-radius: 5px;
@@ -212,22 +248,48 @@
         transition: background-color 0.3s ease, transform 0.3s ease;
         text-align: center;
         margin: 5px;
-        width: 200px; /* Ajustamos el tamaño del botón */
-        border: none; /* Sin bordes */
+        width: 200px; 
+        border: none; 
     }
     
     .btn-primary:hover {
-        background-color:rgb(137, 0, 0) ; /* Color de fondo cuando se pasa el ratón */
-        transform: scale(1.05); /* Ligera animación para que se haga un poco más grande */
+        background-color:rgb(137, 0, 0) ;
+        transform: scale(1.05);
     }
+    .grid-item {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(115, 0, 0); /* Rojo */
+    color: white;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.5s ease-in-out, transform 0.3s ease;
+}
+
+    .grid-item.occupied {
+        background-color: rgb(0, 135, 34); /* Verde cuando tiene nombre */
+        transform: scale(1.05);
+    }
+
+    .grid-item p {
+        font-size: 14px;
+        text-align: center;
+        margin: 0;
+    }
+
     
-        </style>
+</style>
     </head>
     <body>
         
     <header class="header">
         <div class="logo">
-            <img src="{{asset('log.jpg')}}" alt="Logo">
+            <img src="{{asset('img/log.jpg')}}" alt="Logo">
         </div>
         <nav class="home">
             <ul class="nav-links">
@@ -243,11 +305,31 @@
             </ul>
         </nav>
     </header>
-    
+    @if(auth()->user()->role_id == \App\Models\Role::USER)
+    <div class="navbar">
+        @auth
+            <a href="{{ route('dashboard') }}">Home</a>
+            <a href="{{ route('user.listado') }}">Listado de Peñas</a>
+            <a href="{{ route('user.request') }}">Solicitar Unión a Peña</a>
+            <a href="{{ route('admin.lottery') }}">Ver Sorteo</a>
+            <a href="{{ route('user.profile') }}">Perfil</a>
+            <?php $request=auth()->user()->requests->last(); ?>
+            @if(!is_null($request))
+                <div class="request-status 
+                    {{ $request->status == 'pending' ? 'pending' : '' }}
+                    {{ $request->status == 'accepted' ? 'accepted' : '' }}
+                    {{ $request->status == 'rejected' ? 'rejected' : '' }}">
+                    Solicitud {{ $request->status == 'pending' ? 'Pendiente' : ($request->status == 'accepted' ? 'Aceptada' : 'Rechazada') }}
+                </div>
+            @else
+                <div class="request-status">No tienes solicitudes pendientes</div>
+            @endif
+        @endauth
+    </div>
+    @endif
     <div class="content">
         <h2>Participantes en el Sorteo</h2>
-        <!-- Botón para volver al dashboard, dependiendo del rol del usuario -->
-            <!-- Redirigir dependiendo del rol del usuario -->
+       
             <div class="button-container">
             @if(auth()->user()->role_id == \App\Models\Role::ADMIN)
                 <a href="{{ route('admin.dashboard') }}" class="back-button">Volver al Panel de Admin</a>
@@ -256,7 +338,8 @@
             @endif
         </div>
     
-        <!-- Mostrar la lista de participantes -->
+        <div id="app" data-participantes='@json($penyas->pluck("name"))' data-role="{{ auth()->user()->role_id }}"></div>
+
         @if(isset($penyas) && $penyas->count() > 0)
         <table class="participants-table">
             <thead>
@@ -279,37 +362,11 @@
             <p>No hay participantes en el sorteo.</p>
         @endif
     
-        <!-- Botón para realizar el sorteo debajo de los participantes -->
+       
        
         @if(auth()->user() && auth()->user()->role_id == \App\Models\Role::ADMIN)
-            <form action="{{ route('lottery.draw') }}" method="POST">
-                @csrf
-                <input type="hidden" name="year" value="{{ $year }}">
-                <button type="submit" class="btn btn-primary">Realizar Sorteo</button>
-            </form>
+           
         @endif
-    
-    
-    
-    
-        <!-- Cuadrícula 9x6 para el sorteo -->
-        <div class="grid-container">
-            @for ($i = 0; $i < 54; $i++)
-                <div class="grid-item">
-                    @if(isset($places[$i]))
-                        <p>{{ $places[$i]->name }}</p> {{-- Mostramos directamente el nombre de la peña --}}
-                    @endif
-                </div>
-            @endfor
-        </div>
-        
-        
-        
-        
-        
-     
-        
-    
     
     </div>
     
@@ -318,5 +375,8 @@
     
     
     </body>
-    
+   
     </html>
+@viteReactRefresh
+@vite('resources/js/app.jsx')
+            

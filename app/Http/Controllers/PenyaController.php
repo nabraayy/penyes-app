@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Penya;
 use App\Models\User;
+use App\Models\Relation;
 class PenyaController extends Controller
 {
     public function index()
@@ -67,7 +68,9 @@ class PenyaController extends Controller
     public function listado()
     {
         $penyas = Penya::all();
-
+        foreach($penyas as $penya){
+            $penya->nMembers = Relation::where('penya_id', $penya->id)->count();
+        }
         return view('user.listadopenyas', compact('penyas'));
     }
 

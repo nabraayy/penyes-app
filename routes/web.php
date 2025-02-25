@@ -12,6 +12,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\LotteryController;
+use App\Http\Controllers\ContactController;
 
 
 
@@ -59,6 +60,7 @@ Route::get('logout',function(Request $request){
     $request->session()->regenerateToken();
     return redirect('/');
 });
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 //RUTAS USER
 Route::middleware(['auth','role:user'])->group(function(){
     Route::get('/user',[UserController::class, 'dashboard'])->name('user.dashboard');
@@ -110,6 +112,7 @@ Route::get('/admin/penyas/listas',[AdminController::class,'listasPenya'])->name(
 // Ruta para ver las relaciones entre usuarios y peñas
 Route::get('/admin/relations', [AdminController::class, 'viewRelations'])->name('admin.relations.index');
 Route::get('/admin/relations/edit/{id}', [AdminController::class, 'editRelation'])->name('admin.relations.edit'); // Editar una relación
+Route::put('/admin/relations/update/{id}', [AdminController::class, 'updateRelation'])->name('admin.relations.update');
 Route::delete('/admin/relations/delete/{id}', [AdminController::class, 'destroy'])->name('admin.relations.delete');
 Route::put('admin/relations/{id}', [AdminController::class, 'updateRelation'])->name('admin.relations.update');
 

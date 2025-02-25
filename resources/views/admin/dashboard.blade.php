@@ -7,11 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Caveat', sans-serif;
+            font-family: 'Caveat';
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-image: url('https://img.freepik.com/vector-premium/patron-costuras-ilustracion-toros-color-negro-estilo-arte-linea-sobre-fondo-blanco_460232-1948.jpg');  
+            background-image: url('https://img.freepik.com/vector-premium/patron-costuras-ilustracion-toros-color-negro-estilo-arte-linea-sobre-fondo-blanco_460232-1948.jpg');
         }
 
         .header {
@@ -22,7 +22,7 @@
             background-color:rgb(113, 0, 0);
             background-size: contain; 
             padding: 10px 20px;
-            border-bottom: 1px solid #050505;
+            border-bottom: 1px solid #ffffff;
         
         }
 
@@ -163,7 +163,7 @@
 <body>
 <header class="header">
     <div class="logo">
-        <img src="{{asset('log.jpg')}}" alt="Logo">
+        <img src="{{asset('img/log.jpg')}}" alt="Logo">
     </div>
     <nav class="home">
         <ul class="nav-links">

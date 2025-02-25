@@ -41,6 +41,44 @@
             font-size: 24px;
             font-weight: 500;
         }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            background-color: rgb(5, 90, 0);
+            padding: 10px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: rgb(0, 114, 0);
+        }
+
+        .navbar .request-status {
+            color: white;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        .request-status.pending {
+            background-color: orange;
+        }
+
+        .request-status.accepted {
+            background-color: green;
+        }
+
+        .request-status.rejected {
+            background-color: red;
+        }
 
         .nav-links {
             list-style: none;
@@ -147,7 +185,7 @@
 <body>
 <header class="header">
         <div class="logo">
-         <img src="{{asset('log.jpg')}}"/>
+            <img src="{{asset('img/log.jpg')}}" alt="Logo">
         </div>
     <nav class="home">
         <ul class="nav-links">
@@ -163,6 +201,26 @@
         </ul>
     </nav>
 </header>
+<div class="navbar">
+    @auth
+        <a href="{{ route('dashboard') }}">Home</a>
+        <a href="{{ route('user.listado') }}">Listado de Peñas</a>
+        <a href="{{ route('user.request') }}">Solicitar Unión a Peña</a>
+        <a href="{{ route('admin.lottery') }}">Ver Sorteo</a>
+        <a href="{{ route('user.profile') }}">Perfil</a>
+        <?php $request=auth()->user()->requests->last(); ?>
+        @if(!is_null($request))
+            <div class="request-status 
+                {{ $request->status == 'pending' ? 'pending' : '' }}
+                {{ $request->status == 'accepted' ? 'accepted' : '' }}
+                {{ $request->status == 'rejected' ? 'rejected' : '' }}">
+                Solicitud {{ $request->status == 'pending' ? 'Pendiente' : ($request->status == 'accepted' ? 'Aceptada' : 'Rechazada') }}
+            </div>
+        @else
+            <div class="request-status">No tienes solicitudes pendientes</div>
+        @endif
+    @endauth
+</div>
 
 <div class="content">
     <h2>Peñas y sus Miembros</h2>
@@ -180,7 +238,7 @@
                 <tr>
                     <td><strong>{{ $penya->name }}</strong></td>
                     <td>{{ $penya->description}}</td>
-                    <td>{{ $penya->members }}</td>
+                    <td>{{ $penya->nMembers }}</td>
                 </tr>
                 @endforeach
             </tbody>

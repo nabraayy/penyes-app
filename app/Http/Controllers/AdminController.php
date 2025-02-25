@@ -149,6 +149,9 @@ class AdminController extends Controller
     {
         
         $relation = Relation::with('user')->find($id);
+        if (!$relation) {
+            return redirect()->route('admin.relations.index')->with('error', 'Relación no encontrada');
+        }
         $penyas = Penya::all();
         return view('admin.relations.edit', compact('relation', 'penyas'));             
 

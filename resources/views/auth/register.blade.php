@@ -105,12 +105,16 @@
 
         body {
             font-family: 'Caveat', cursive;
-            background: #f0f0f0;
-            display: flex;
+            background-image: url({{asset('img/torr.jpg')}});
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            display:flex;
+            height: 100%;
+            margin: 0;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            
         }
 
         .form-container {
@@ -118,7 +122,7 @@
             width: 100%;
             max-width: 400px;
             padding: 30px;
-            border-radius: 12px;
+            border-radius: 40px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
@@ -156,8 +160,8 @@
         }
 
         .input-field:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+            border-color: #750000;
+            box-shadow: 0 0 8px rgba(136, 0, 0, 0.3);
         }
 
         .error-message {
@@ -170,7 +174,7 @@
             padding: 12px;
             font-size: 18px;
             color: #fff;
-            background-color: #007bff;
+            background-color: #187000;
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -178,7 +182,7 @@
         }
 
         .submit-button:hover {
-            background-color: #0056b3;
+            background-color: #5f0303;
         }
 
         .form-footer {
@@ -186,7 +190,7 @@
         }
 
         .form-footer a {
-            color: #007bff;
+            color: #a10000;
             text-decoration: none;
         }
 

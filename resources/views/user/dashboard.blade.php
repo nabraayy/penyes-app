@@ -20,17 +20,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color:rgb(127, 0, 0);
+            background-color: rgb(127, 0, 0);
             padding: 10px 20px;
             color:white;
-            border-bottom: 1px solid #050505;
+            border-bottom: 3px solid #050505;
         }
 
         .header .logo img {
             max-width: 100px; 
             max-height: 100px; 
             border-radius: 10%; 
-            box-shadow: 0 8px 12px rgba(4, 3, 3, 0.1); /* Agregamos una sombra suave */
+            box-shadow: 0 8px 12px rgba(4, 3, 3, 0.2);
             transition: transform 0.3s ease; 
         }
 
@@ -41,7 +41,7 @@
         .header h1 {
             font-size: 24px;
             font-weight: bold;
-            color: #333;
+            color: #fff;
         }
 
         .nav-links {
@@ -54,23 +54,21 @@
 
         .nav-link {
             text-decoration: none;
-            color: #000;
+            color: #fff;
             font-weight: bold;
             transition: color 0.3s ease;
         }
 
         .nav-link:hover {
-            color: #666;
+            color: #ddd;
         }
 
-        /* Navbar section */
         .navbar {
             display: flex;
             justify-content: center;
             gap: 15px;
-            background-color:rgb(5, 90, 0);
+            background-color: rgb(5, 90, 0);
             padding: 10px;
-           
         }
 
         .navbar a {
@@ -83,7 +81,7 @@
         }
 
         .navbar a:hover {
-            background-color:rgb(0, 114, 0);
+            background-color: rgb(0, 114, 0);
         }
 
         .navbar .request-status {
@@ -105,100 +103,183 @@
             background-color: red;
         }
 
-        /* Footer */
+        /* Footer styles */
         .footer {
             background-color: #333;
             color: white;
             text-align: center;
-            padding: 10px 0;
+            padding: 20px 0;
             margin-top: 20px;
         }
-        .logout-button{
-            font-family: canveat;
-            border-radius:4px;
-            background-color:rgb(0, 103, 14);
-            color:white;
-            border: none;
-            text-align: center;
+
+        /* New section styles */
+        .history-section, .events-section, .testimonials-section, .gallery-section, .contact-section {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            margin-top: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .history-section h2, .events-section h2, .testimonials-section h2, .gallery-section h2, .contact-section h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .history-section p, .testimonials-section p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .event-card {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-card h3 {
             font-size: 18px;
-            transition: all 0.5s;
-            cursor: pointer;
-            margin: 10px;
+            margin: 0;
         }
-        .logout-button span{
+
+        .event-card p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .testimonials-section blockquote {
+            border-left: 4px solid #888;
+            padding-left: 15px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .gallery-section img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .contact-section form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-section input, .contact-section textarea {
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .contact-section button {
+            background-color: #127B00;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
             cursor: pointer;
-            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-section button:hover {
+            background-color: #0a5c00;
+        }
+
+        /* Carousel styles */
+        .carousel-container {
             position: relative;
-            transition: 0.5s;
+            width: 100%;
+            overflow: hidden;
+            margin: 40px 0;
         }
-        .logout-button span:after{
-            content: '\00bb';
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-images img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .carousel-btn {
             position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 24px;
         }
-        .logout-button:hover span{
-            padding-right: 25px;
+
+        .carousel-btn.left {
+            left: 10px;
         }
-        .logout-button:hover span:after{
-            opacity: 1;
-             right: 0;
+
+        .carousel-btn.right {
+            right: 10px;
         }
-        .photos-section {
-    text-align: center;
-    padding: 40px;
-}
-
-.carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    width: 80%;
-    margin: 0 auto;
-}
-
-.carousel-btn {
-    background-color: #ddd;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 18px;
-    z-index: 10;
-}
-
-.carousel-images {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-}
-
-.carousel-images img {
-    width: 500px;
-    height: auto;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    margin-right: 20px;
-}
-
+        .logout-button{
+                font-family: 'Caveat', cursive;
+                border-radius:4px;
+                background-color:rgb(0, 103, 14);
+                color:white;
+                border: none;
+                text-align: center;
+                font-size: 18px;
+                transition: all 0.5s;
+                cursor: pointer;
+                margin: 10px;
+            }
+            .logout-button span{
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
+            .logout-button span:after{
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+            .logout-button:hover span{
+                padding-right: 25px;
+            }
+            .logout-button:hover span:after{
+                opacity: 1;
+                 right: 0;
+            }
     </style>
 </head>
 <body>
 
 <header class="header">
     <div class="logo">
-        <img src="log.jpg" alt="Logo">
+        <img src="{{asset('img/log.jpg')}}" alt="Logo">
     </div>
     <nav>
         <ul class="nav-links">
             @auth
                 <li><span>{{ Auth::user()->name }}</span></li>
                 <li>
-                    <form action="{{ route('logout') }}" method="POST">
+                    <form action="{{ route('logout') }}" method="POST" class="logout-form">
                         @csrf
                         <button type="submit" class="logout-button"><span>Logout</span></button>
                     </form>
@@ -210,8 +291,7 @@
         </ul>
     </nav>
 </header>
-<body>
-<!-- Navigation Bar below the header with request status -->
+
 <div class="navbar">
     @auth
         <a href="{{ route('dashboard') }}">Home</a>
@@ -219,51 +299,66 @@
         <a href="{{ route('user.request') }}">Solicitar Unión a Peña</a>
         <a href="{{ route('admin.lottery') }}">Ver Sorteo</a>
         <a href="{{ route('user.profile') }}">Perfil</a>
-        <!-- Display the request status here -->
-        @if(auth()->user()->requests->isNotEmpty())
-            @foreach(auth()->user()->requests as $request)
-                <div class="request-status 
-                    {{ $request->status == 'pending' ? 'pending' : '' }}
-                    {{ $request->status == 'accepted' ? 'accepted' : '' }}
-                    {{ $request->status == 'rejected' ? 'rejected' : '' }}">
-                    Solicitud {{ $request->status == 'pending' ? 'Pendiente' : ($request->status == 'accepted' ? 'Aceptada' : 'Rechazada') }}
-                </div>
-            @endforeach
+        <?php $request=auth()->user()->requests->last(); ?>
+        @if(!is_null($request))
+            <div class="request-status 
+                {{ $request->status == 'pending' ? 'pending' : '' }}
+                {{ $request->status == 'accepted' ? 'accepted' : '' }}
+                {{ $request->status == 'rejected' ? 'rejected' : '' }}">
+                Solicitud {{ $request->status == 'pending' ? 'Pendiente' : ($request->status == 'accepted' ? 'Aceptada' : 'Rechazada') }}
+            </div>
         @else
             <div class="request-status">No tienes solicitudes pendientes</div>
         @endif
     @endauth
 </div>
 
-<section class="photos-section">
-            <h2>Fotos de las penyas</h2>
-            <div class="carousel">
-                <button class="carousel-btn left">&lt;</button> 
-                <div class="carousel-images">
-                    <img src="https://www.elheraldo.com.ec/wp-content/uploads/2024/03/FOTO-100.jpg" alt="Photo 1">
-                    <img src="https://s3.ppllstatics.com/lasprovincias/www/multimedia/201809/28/media/cortadas/129454301--624x415.jpg" alt="Photo 2">
-                    <img src="https://torogestion.com/wp-content/uploads/2024/05/277790319_3175403629453207_1787865433349977677_n-1080x675.jpg" alt="Photo 3">
-                    <img src="https://s2.ppllstatics.com/lasprovincias/www/multimedia/202011/05/media/cortadas/154984790--1248x772.jpg" alt="Photo 4">
-                    <img src="https://nules.org/wp-content/uploads/2023/08/1er-PREMI-MILLOR-DISFRESSA-PENYA-XUPLIT-scaled.jpg">
-                    <img src="https://estaticos-cdn.prensaiberica.es/clip/03d88057-8e0f-4b3e-905c-96c0876b4221_16-9-discover-aspect-ratio_default_0.jpg">
-                    <img src="https://www.burladero.tv/u/fotografias/m/2020/7/18/f1280x720-165617_297292_5050.jpeg">
-                    <img src="https://s1.elespanol.com/2023/08/13/castilla-y-leon/region/salamanca/786431535_235332176_1706x1280.jpg">
-                    <img src="https://www.elperiodic.com/archivos/imagenes/noticias/2022/09/16/snm-0421.JPG">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjMco-2O6_LsHfm11_l5s2Fb30sgYmANqio-kJiOhgAjnSfZndjD07_VvuRjRWeuk7f8BywgBEDAc2W1v5e8ekyzJVdGCGFnR6IeN3z4t1TaFKeLu4Oa25kvtQ4epfq_k9l0frkLAHtPvE/s1600/TORO+PALHA+N%25C2%25BA+598+G-2+SANT+XOTXIM+2016++NULES+%2528CASTELL%25C3%2593N%2529.jpg">
-                    <img src="https://www.elperiodic.com/archivos/imagenes/noticias/2022/09/16/snm-0631.JPG">
-                </div>
-                <button class="carousel-btn right">&gt;</button>
-            </div>
-        </section>
-</body>
+<section class="history-section">
+    <h2>Historia de las Peñas Taurinas</h2>
+    <p>Las peñas taurinas han jugado un papel fundamental en la cultura taurina, reuniendo a aficionados para celebrar la tradición de las corridas de toros y otros eventos relacionados. A lo largo de los años, las peñas se han convertido en puntos de encuentro donde los amantes del toro disfrutan de momentos únicos y comparten su pasión.</p>
+</section>
 
+<section class="events-section">
+    <h2>Calendario de Eventos</h2>
+    <div class="event-card">
+        <h3>Fiesta Taurina de Primavera</h3>
+        <p>Fecha: 10 de marzo, 2025</p>
+        <p>Descripción: Una fiesta que reúne a las mejores peñas para una tarde de festejos taurinos.</p>
+    </div>
+    <div class="event-card">
+        <h3>Gran Corrida de Toros</h3>
+        <p>Fecha: 25 de abril, 2025</p>
+        <p>Descripción: La mayor corrida del año, con toreros de renombre y una gran celebración.</p>
+    </div>
+</section>
+
+<section class="testimonials-section">
+    <h2>Testimonios de los Miembros</h2>
+    <blockquote>
+        "Unirme a la Peña Taurina fue una de las mejores decisiones de mi vida. He hecho grandes amigos y vivido experiencias únicas." - Juan Pérez
+    </blockquote>
+    <blockquote>
+        "La tradición de las peñas me ha dado una conexión más profunda con la cultura taurina. ¡Es un ambiente increíble!" - María Rodríguez
+    </blockquote>
+</section>
+
+<section class="gallery-section">
+    <h2>Galería de Imágenes</h2>
+    <div class="carousel-container">
+        <div class="carousel-images">
+            <img src="https://www.elheraldo.com.ec/wp-content/uploads/2024/03/FOTO-100.jpg" alt="Evento 1">
+            <img src="https://s3.ppllstatics.com/lasprovincias/www/multimedia/201809/28/media/cortadas/129454301--624x415.jpg" alt="Evento 2">
+            <img src="https://torogestion.com/wp-content/uploads/2024/05/277790319_3175403629453207_1787865433349977677_n-1080x675.jpg" alt="Evento 3">
+        </div>
+        <button class="carousel-btn left">&#10094;</button>
+        <button class="carousel-btn right">&#10095;</button>
+    </div>
+</section>
 
 <footer class="footer">
     <p>&copy; 2025 PenyApp. Todos los derechos reservados.</p>
 </footer>
 
-</body>
-</html>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const carouselImages = document.querySelector(".carousel-images");
@@ -273,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let index = 0;
 
     function updateCarousel() {
-        const imageWidth = carouselImages.children[0].clientWidth + 20;
+        const imageWidth = carouselImages.children[0].clientWidth;
         carouselImages.style.transform = `translateX(${-index * imageWidth}px)`;
     }
 
@@ -295,7 +390,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateCarousel();
     });
 
-    // Pase automático
+    // Auto-slide every 3 seconds
     setInterval(() => {
         if (index < carouselImages.children.length - 1) {
             index++;
@@ -306,3 +401,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3000);
 });
 </script>
+
+</body>
+</html>
