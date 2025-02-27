@@ -32,6 +32,38 @@
                 gap: 20px;
                 justify-content: center;
             }
+            .menu-container{
+    position: relative;
+    display:inline-block;
+    
+}
+.menu-button{
+    font-family: 'Caveat';
+    color:black;
+    padding:5px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    background: #ffffff;
+}
+.menu{
+    display:none;
+    position:absolute;
+    right: 30px;
+    background-color:rgb(93, 93, 93);
+    min-width: 80px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.menu a {
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+    display: block;
+}
+.menu a:hover {
+    background-color:rgb(0, 176, 47);
+}
     
             .nav-item {
                 display: inline;
@@ -339,7 +371,19 @@
         </div>
     
         <div id="app" data-participantes='@json($penyas->pluck("name"))' data-role="{{ auth()->user()->role_id }}"></div>
+        <div>
+            <div class="menu-container"> 
+                <button class="menu-button" onclick="toggleMenu()">AÑOS</button>
+                <div class="menu" id="menu">
+                    <a href="#">2024</a>
+                    <a href="#">2023</a>
+                    <a href="#">2022</a>
+                    <a href="#">2021</a>
+                    <a href="#">2020</a>
 
+                </div>
+            </div>
+        </div>
         @if(isset($penyas) && $penyas->count() > 0)
         <table class="participants-table">
             <thead>
@@ -377,6 +421,12 @@
     </body>
    
     </html>
+    <script>
+        function toggleMenu(){
+        var menu =document.getElementById("menu");
+        menu.style.display= menu.style.display === "block" ? "none" :"block";
+    }
+    </script>
 @viteReactRefresh
 @vite('resources/js/app.jsx')
             

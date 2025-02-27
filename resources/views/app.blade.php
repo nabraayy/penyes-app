@@ -149,7 +149,7 @@
 </body>
 </html>
 
-    <style>
+<style>
 /* General styles */
 
 
